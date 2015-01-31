@@ -13,8 +13,9 @@ public class Main {
 		GridBagLayout mainPaneLayout = new GridBagLayout();
 		mainPane.setLayout(mainPaneLayout);
 		
+		ArrayList<String> dataLines = new ArrayList<String>();
 		JTabbedPane programStepTabs = new JTabbedPane();
-		//ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
+		ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 		
 		JTextPane programDisplay = new JTextPane();
 		GridBagConstraints programDisplayConstraints = new GridBagConstraints();
@@ -39,9 +40,8 @@ public class Main {
 		newTabButtonConstraints.gridy = 0;
 		newTabButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//programSteps.add(new ProgramStepPanel());
-				//programStepTabs.add("Step " + programStepTabs.getTabCount(), programSteps.get(programStepTabs.getTabCount()));
-				programStepTabs.add("Step " + programStepTabs.getTabCount(), new ProgramStepPanel());
+				programSteps.add(new ProgramStepPanel( programStepTabs.getTabCount() , programDisplay, dataLines));
+				programStepTabs.add("Step " + programStepTabs.getTabCount(), programSteps.get(programStepTabs.getTabCount()));
 			}
 		});
 		
