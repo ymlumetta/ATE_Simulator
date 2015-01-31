@@ -40,7 +40,7 @@ public class Main {
 		mainWindowManager.setConstraints(newTabButton, newTabButtonConstraints);
 		newTabButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				programSteps.add(new ProgramStepPanel());
+				programSteps.add(new ProgramStepPanel( programStepTabs.getTabCount() , programDisplay, dataLines));
 				programStepTabs.add("Step " + programStepTabs.getTabCount(), programSteps.get(programStepTabs.getTabCount()));
 			}
 		});
