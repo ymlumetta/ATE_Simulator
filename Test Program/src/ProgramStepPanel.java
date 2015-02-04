@@ -9,6 +9,8 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
 public class ProgramStepPanel extends JPanel {
@@ -20,12 +22,22 @@ public class ProgramStepPanel extends JPanel {
 	ArrayList<Object> setVoltageArray = new ArrayList<Object>();
 	ArrayList<Object> setCurrentArray = new ArrayList<Object>();
 	ArrayList<Object> waitArray = new ArrayList<Object>();
+	ArrayList<Object> measureVoltageArray = new ArrayList<Object>();
+	ArrayList<Object> measureCurrentArray = new ArrayList<Object>();
+	ArrayList<Object> datalogArray = new ArrayList<Object>();
+	ArrayList<Object> mathArray = new ArrayList<Object>();
+	ArrayList<JCheckBox> turnOffResourcesArray = new ArrayList<JCheckBox>();
 	ArrayList<String> dataString;
 	String openRelays = "Open Relays";
 	String closeRelays = "Close Relays";
 	String setVoltage;
 	String setCurrent;
 	String wait;
+	String measureV;
+	String measureI;
+	String datalog;
+	String math;
+	String turnOffResources;
 	
 public ProgramStepPanel(int lineNumber, JTextPane textDisplay, ArrayList<String> dataLines) {
 		// TODO Auto-generated constructor stub
@@ -129,40 +141,58 @@ private class stepTypeListener implements ActionListener {
 				JTextField numberOfSamplesV = new JTextField();
 				numberOfSamplesV.setText("How Many Samples");
 				stepTypePanel.add(numberOfSamplesV);
+				measureVoltageArray.add(numberOfSamplesV);
+				numberOfSamplesV.getDocument().addDocumentListener(new MeasureVoltageListener());
 				JTextField timeBetweenSamplesV = new JTextField();
 				timeBetweenSamplesV.setText("Time Between Samples");
 				stepTypePanel.add(timeBetweenSamplesV);
+				timeBetweenSamplesV.getDocument().addDocumentListener(new MeasureVoltageListener());
+				measureVoltageArray.add(timeBetweenSamplesV);
 				JTextField variableNameV = new JTextField();
 				variableNameV.setText("Store As Variable Name");
 				stepTypePanel.add(variableNameV);
+				measureVoltageArray.add(variableNameV);
+				variableNameV.getDocument().addDocumentListener(new MeasureVoltageListener());
 				break;
 			case "Measure Current":
 				JTextField numberOfSamplesC = new JTextField();
 				numberOfSamplesC.setText("How Many Samples");
 				stepTypePanel.add(numberOfSamplesC);
+				measureCurrentArray.add(numberOfSamplesC);
+				numberOfSamplesC.getDocument().addDocumentListener(new MeasureCurrentListener());
 				JTextField timeBetweenSamplesC = new JTextField();
 				timeBetweenSamplesC.setText("Time Between Samples");
 				stepTypePanel.add(timeBetweenSamplesC);
+				timeBetweenSamplesC.getDocument().addDocumentListener(new MeasureCurrentListener());
+				measureCurrentArray.add(timeBetweenSamplesC);
 				JTextField variableNameC = new JTextField();
 				variableNameC.setText("Store As Variable Name");
 				stepTypePanel.add(variableNameC);
+				measureCurrentArray.add(variableNameC);
+				variableNameC.getDocument().addDocumentListener(new MeasureCurrentListener());
 				break;
 			case "Datalog":
 				JTextField whatVariable = new JTextField();
 				stepTypePanel.add(whatVariable);
+				datalogArray.add(whatVariable);
+				whatVariable.getDocument().addDocumentListener(new DatalogListener());
 				break;
 			case "Turn Off Resources":
 				JCheckBox cS = new JCheckBox("Current Sources");
 				stepTypePanel.add(cS);
+				turnOffResourcesArray.add(cS);
+				cS.addActionListener(new TurnOffResourcesListener());
 				JCheckBox vS = new JCheckBox("Voltage Sources");
 				stepTypePanel.add(vS);
+				turnOffResourcesArray.add(vS);
+				vS.addActionListener(new TurnOffResourcesListener());
 				break;
 			case "Math":
-				JCheckBox act = new JCheckBox("Activate");
-				stepTypePanel.add(act);
 				JTextField math = new JTextField();
 				math.setText("Enter Math Here");
 				stepTypePanel.add(math);
+				mathArray.add(math);
+				math.getDocument().addDocumentListener(new MathListener());
 				break;
 			default:
 				break;
@@ -273,4 +303,192 @@ private class waitActionListener implements ActionListener {
 	}
 }
 
+private class MeasureVoltageListener implements DocumentListener {
+
+	@Override
+	public void changedUpdate(DocumentEvent arg0) {
+	
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent arg0) {
+		Iterator<Object> mVAI = measureVoltageArray.iterator();
+		measureV = "Take " + ((JTextField) mVAI.next()).getText() + " samples";
+		measureV = measureV +  " measuring every " + ((JTextField) mVAI.next()).getText() + " us,";
+		measureV = measureV +  " store as variable " + ((JTextField) mVAI.next()).getText();
+		measureV = measureV + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, measureV);
+		}else {
+			dataString.set(textLineNumber, measureV);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent arg0) {
+		Iterator<Object> mVAI = measureVoltageArray.iterator();
+		measureV = "Take " + ((JTextField) mVAI.next()).getText() + " samples";
+		measureV = measureV +  " measuring every " + ((JTextField) mVAI.next()).getText() + " us,";
+		measureV = measureV +  " store as variable " + ((JTextField) mVAI.next()).getText();
+		measureV = measureV + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, measureV);
+		}else {
+			dataString.set(textLineNumber, measureV);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+	
+	
+	
 }
+
+private class MeasureCurrentListener implements DocumentListener {
+
+	@Override
+	public void changedUpdate(DocumentEvent arg0) {
+	
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent arg0) {
+		Iterator<Object> mIAI = measureCurrentArray.iterator();
+		measureI = "Take " + ((JTextField) mIAI.next()).getText() + " samples";
+		measureI = measureI +  " measuring every " + ((JTextField) mIAI.next()).getText() + " us,";
+		measureI = measureI +  " store as variable " + ((JTextField) mIAI.next()).getText();
+		measureI = measureI + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, measureI);
+		}else {
+			dataString.set(textLineNumber, measureI);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent arg0) {
+		Iterator<Object> mIAI = measureCurrentArray.iterator();
+		measureI = "Take " + ((JTextField) mIAI.next()).getText() + " samples";
+		measureI = measureI +  " measuring every " + ((JTextField) mIAI.next()).getText() + " us,";
+		measureI = measureI +  " store as variable " + ((JTextField) mIAI.next()).getText();
+		measureI = measureI + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, measureI);
+		}else {
+			dataString.set(textLineNumber, measureI);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+	
+	
+	
+}
+
+private class DatalogListener implements DocumentListener {
+
+	@Override
+	public void changedUpdate(DocumentEvent arg0) {
+	
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent arg0) {
+		Iterator<Object> dAI = datalogArray.iterator();
+		datalog = "Datalog " + ((JTextField) dAI.next()).getText();
+		datalog = datalog + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, datalog);
+		}else {
+			dataString.set(textLineNumber, datalog);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent arg0) {
+		Iterator<Object> dAI = datalogArray.iterator();
+		datalog = "Datalog " + ((JTextField) dAI.next()).getText();
+		datalog = datalog + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, datalog);
+		}else {
+			dataString.set(textLineNumber, datalog);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+	
+	
+	
+}
+
+private class MathListener implements DocumentListener {
+
+	@Override
+	public void changedUpdate(DocumentEvent arg0) {
+	
+	}
+
+	@Override
+	public void insertUpdate(DocumentEvent arg0) {
+		Iterator<Object> mAI = mathArray.iterator();
+		math = ((JTextField) mAI.next()).getText();
+		math = math + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, math);
+		}else {
+			dataString.set(textLineNumber, math);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent arg0) {
+		Iterator<Object> mAI = mathArray.iterator();
+		math = ((JTextField) mAI.next()).getText();
+		math = math + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, math);
+		}else {
+			dataString.set(textLineNumber, math);
+		}
+		testCode.setText(dataString.toString());
+		
+	}
+	
+	
+	
+}
+
+private class TurnOffResourcesListener implements ActionListener {
+	@SuppressWarnings("unchecked")
+	public void actionPerformed (ActionEvent e) {
+		turnOffResources = "Turn off ";
+		Iterator<JCheckBox> tORAI = turnOffResourcesArray.iterator();
+		if(tORAI.next().isSelected()){
+			turnOffResources = turnOffResources + " Voltage Sources ";
+		}
+		if(tORAI.next().isSelected()){
+			turnOffResources = turnOffResources + " Current Sources";
+		}
+		turnOffResources = turnOffResources + "\n";
+		if(dataString.size() < textLineNumber + 1){
+			dataString.add(textLineNumber, turnOffResources);
+		}else {
+			dataString.set(textLineNumber, turnOffResources);
+		}
+		testCode.setText(dataString.toString());
+	}
+}
+
+}
+
+
+
