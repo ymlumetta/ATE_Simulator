@@ -7,25 +7,29 @@ import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 public class ProgramStepPanel extends JPanel {
 
 	public ProgramStepPanel() {
 		// TODO Auto-generated constructor stub
-		JComboBox<String> stepType = new JComboBox<String>(new String[] {" ", "Open Relays", "Close Relays" , "Set Voltage", "Set Current","Wait", "Measure Voltage", "Measure Current", "Datalog" , "Turn Off Resources"});
+		JComboBox<String> stepType = new JComboBox<String>(new String[] { " ",
+				"Open Relays", "Close Relays", "Set Voltage", "Set Current",
+				"Wait", "Measure Voltage", "Measure Current", "Datalog",
+				"Turn Off Resources" });
 		stepType.addActionListener(new stepTypeListener());
 		this.add(stepType);
 	}
 
-private class stepTypeListener implements ActionListener {
-	@SuppressWarnings("unchecked")
-	public void actionPerformed (ActionEvent e) {
-		if(((JComboBox<String>) e.getSource()).getParent().getComponentCount() > 1)
-			((JComboBox<String>) e.getSource()).getParent().remove(1);
-		
-		JPanel stepTypePanel = new JPanel();
-		
-		switch((String) ((JComboBox<String>) e.getSource()).getSelectedItem()) {
+	private class stepTypeListener implements ActionListener {
+		@SuppressWarnings("unchecked")
+		public void actionPerformed(ActionEvent e) {
+			if (((JComboBox<String>) e.getSource()).getParent()
+					.getComponentCount() > 1)
+				((JComboBox<String>) e.getSource()).getParent().remove(1);
+
+			JPanel stepTypePanel = new JPanel();
+
+			switch ((String) ((JComboBox<String>) e.getSource())
+					.getSelectedItem()) {
 			case "Open Relays":
 				JCheckBox RO1 = new JCheckBox("Relay 1");
 				stepTypePanel.add(RO1);
@@ -45,17 +49,21 @@ private class stepTypeListener implements ActionListener {
 			case "Set Voltage":
 				JTextField Voltage = new JTextField();
 				stepTypePanel.add(Voltage);
-				JComboBox<String> voltageRangeV = new JComboBox<String>(new String[] {"100 V", "30 V", "10 V" , "1 V", "500 mV"});
+				JComboBox<String> voltageRangeV = new JComboBox<String>(
+						new String[] { "100 V", "30 V", "10 V", "1 V", "500 mV" });
 				stepTypePanel.add(voltageRangeV);
-				JComboBox<String> currentRangeV = new JComboBox<String>(new String[] {"1 mA", "10 mA", "100 mA" , "1 A", "5 A"});
+				JComboBox<String> currentRangeV = new JComboBox<String>(
+						new String[] { "1 mA", "10 mA", "100 mA", "1 A", "5 A" });
 				stepTypePanel.add(currentRangeV);
 				break;
 			case "Set Current":
 				JTextField Current = new JTextField();
 				stepTypePanel.add(Current);
-				JComboBox<String> voltageRangeC = new JComboBox<String>(new String[] {"100 V", "30 V", "10 V" , "1 V", "500 mV"});
+				JComboBox<String> voltageRangeC = new JComboBox<String>(
+						new String[] { "100 V", "30 V", "10 V", "1 V", "500 mV" });
 				stepTypePanel.add(voltageRangeC);
-				JComboBox<String> currentRangeC = new JComboBox<String>(new String[] {"1 mA", "10 mA", "100 mA" , "1 A", "5 A"});
+				JComboBox<String> currentRangeC = new JComboBox<String>(
+						new String[] { "1 mA", "10 mA", "100 mA", "1 A", "5 A" });
 				stepTypePanel.add(currentRangeC);
 				break;
 			case "Wait":
@@ -90,9 +98,10 @@ private class stepTypeListener implements ActionListener {
 				break;
 			default:
 				break;
+			}
+			((JComboBox<String>) e.getSource()).getParent().add(stepTypePanel);
+			stepTypePanel.getParent().validate();
+			stepTypePanel.getParent().repaint();
 		}
-		((JComboBox<String>) e.getSource()).getParent().add(stepTypePanel);
 	}
-}
-
 }
