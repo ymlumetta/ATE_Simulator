@@ -1,4 +1,3 @@
-import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,6 +11,7 @@ import javax.swing.JTextPane;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
+@SuppressWarnings("serial")
 public class ProgramStepPanel extends JPanel {
 
 	int textLineNumber;
@@ -215,7 +215,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class openRelaysListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			openRelays = "Open Relays";
 			Iterator<JCheckBox> oRAI = openRelaysArray.iterator();
@@ -239,7 +238,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class closeRelaysListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			closeRelays = "Close Relays";
 			Iterator<JCheckBox> cRAI = closeRelaysArray.iterator();
@@ -263,7 +261,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class setVoltageListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			setVoltage = "Set Voltage";
 			Iterator<Object> sVAI = setVoltageArray.iterator();
@@ -286,7 +283,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class setCurrentListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			setCurrent = "Set Current";
 			Iterator<Object> sCAI = setCurrentArray.iterator();
@@ -309,7 +305,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class waitActionListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			wait = "Wait for ";
 			Iterator<Object> wAI = waitArray.iterator();
@@ -493,7 +488,6 @@ public class ProgramStepPanel extends JPanel {
 	}
 
 	private class TurnOffResourcesListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			turnOffResources = "Turn off ";
 			Iterator<JCheckBox> tORAI = turnOffResourcesArray.iterator();
