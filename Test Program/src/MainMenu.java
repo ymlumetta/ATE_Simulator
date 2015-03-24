@@ -37,7 +37,7 @@ public class MainMenu extends JMenuBar {
 		mixedSignalPartMenu.add(tlv5616);
 		
 		JMenuItem ads7822 = new JMenuItem("ADS7822");
-		ads7822.addActionListener(this);
+		ads7822.addActionListener(new PartMenuListener());
 		mixedSignalPartMenu.add(ads7822);
 		
 		partMenu.add(mixedSignalPartMenu);
@@ -45,7 +45,7 @@ public class MainMenu extends JMenuBar {
 		JMenu digitalPartMenu = new JMenu("Digital");
 		
 		JMenuItem pic16f883 = new JMenuItem("PIC16F883");
-		pic16f883.addActionListener(this);
+		pic16f883.addActionListener(new PartMenuListener());
 		digitalPartMenu.add(pic16f883);
 		
 		partMenu.add(digitalPartMenu);
@@ -55,37 +55,37 @@ public class MainMenu extends JMenuBar {
 		JMenu testMenu = new JMenu("Test");
 		
 		JMenuItem continuity = new JMenuItem("Continuity");
-		continuity.addActionListener(this);
+		continuity.addActionListener(new TestMenuListener());
 		testMenu.add(continuity);
 		
 		JMenu analogTestMenu = new JMenu("Analog");
 		
 		JMenuItem analogOffset = new JMenuItem("Offset");
-		analogOffset.addActionListener(this);
+		analogOffset.addActionListener(new TestMenuListener());
 		analogTestMenu.add(analogOffset);
 		
 		JMenuItem gainBandwidth = new JMenuItem("Gain Bandwidth");
-		gainBandwidth.addActionListener(this);
+		gainBandwidth.addActionListener(new TestMenuListener());
 		analogTestMenu.add(gainBandwidth);
 		
 		JMenuItem cmrr = new JMenuItem("Common Mode Rejection Ratio");
-		cmrr.addActionListener(this);
+		cmrr.addActionListener(new TestMenuListener());
 		analogTestMenu.add(cmrr);
 		
 		JMenuItem psrr = new JMenuItem("Power Supply Rejection Ratio");
-		psrr.addActionListener(this);
+		psrr.addActionListener(new TestMenuListener());
 		analogTestMenu.add(psrr);
 		
 		JMenuItem gol = new JMenuItem("Open Loop Gain");
-		gol.addActionListener(this);
+		gol.addActionListener(new TestMenuListener());
 		analogTestMenu.add(gol);
 		
 		JMenuItem inputBias = new JMenuItem("Input Bias Current");
-		inputBias.addActionListener(this);
+		inputBias.addActionListener(new TestMenuListener());
 		analogTestMenu.add(inputBias);
 		
 		JMenuItem analogTHD = new JMenuItem("Total Harmonic Distortion");
-		analogTHD.addActionListener(this);
+		analogTHD.addActionListener(new TestMenuListener());
 		analogTestMenu.add(analogTHD);
 		
 		testMenu.add(analogTestMenu);
@@ -93,19 +93,19 @@ public class MainMenu extends JMenuBar {
 		JMenu mixedSignalTestMenu = new JMenu("Mixed Signal");
 		
 		JMenuItem offsetHysteresis = new JMenuItem("Offset/Hysteresis");
-		offsetHysteresis.addActionListener(this);
+		offsetHysteresis.addActionListener(new TestMenuListener());
 		mixedSignalTestMenu.add(offsetHysteresis);
 		
 		JMenuItem mixedTHD = new JMenuItem("Total Harmonic Distortion");
-		mixedTHD.addActionListener(this);
+		mixedTHD.addActionListener(new TestMenuListener());
 		mixedSignalTestMenu.add(mixedTHD);
 		
 		JMenuItem gainError = new JMenuItem("Gain Error");
-		gainError.addActionListener(this);
+		gainError.addActionListener(new TestMenuListener());
 		mixedSignalTestMenu.add(gainError);
 		
 		JMenuItem dnlINL = new JMenuItem("Differential and Integral Nonlinearity");
-		dnlINL.addActionListener(this);
+		dnlINL.addActionListener(new TestMenuListener());
 		mixedSignalTestMenu.add(dnlINL);
 		
 		testMenu.add(mixedSignalTestMenu);
@@ -134,8 +134,11 @@ final class PartMenuListener implements ActionListener
 {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		switch(((JMenuItem) arg0.getSource()).getText()) {
+			case "LM741":
+				break;
+			default: break;
+		}
 	}	
 }
 
