@@ -13,10 +13,6 @@ public class Main {
 		GridBagLayout mainPaneLayout = new GridBagLayout();
 		mainPane.setLayout(mainPaneLayout);
 
-		ArrayList<String> dataLines = new ArrayList<String>();
-		JTabbedPane programStepTabs = new JTabbedPane();
-		ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
-
 		MainMenu mainMenu = new MainMenu();
 		GridBagConstraints mainMenuConstraints = new GridBagConstraints();
 		mainMenuConstraints.gridx = 0;
@@ -25,7 +21,7 @@ public class Main {
 		mainMenuConstraints.weighty = 0.0;
 		mainMenuConstraints.gridwidth = GridBagConstraints.REMAINDER;
 		mainMenuConstraints.fill = GridBagConstraints.HORIZONTAL;
-				
+
 		JLabel statusLabel = new JLabel();
 		GridBagConstraints statusLabelConstraints = new GridBagConstraints();
 		statusLabelConstraints.gridx = 0;
@@ -35,7 +31,7 @@ public class Main {
 		statusLabelConstraints.gridwidth = GridBagConstraints.REMAINDER;
 		statusLabelConstraints.fill = GridBagConstraints.HORIZONTAL;
 		statusLabel.setText("Part: ; Test: ");
-		
+
 		JTextPane programDisplay = new JTextPane();
 		GridBagConstraints programDisplayConstraints = new GridBagConstraints();
 		programDisplayConstraints.gridx = 0;
@@ -46,6 +42,9 @@ public class Main {
 		programDisplay.setPreferredSize(new Dimension(400, 768));
 		programDisplay.setEditable(false);
 
+		ArrayList<String> dataLines = new ArrayList<String>();
+		ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
+		JTabbedPane programStepTabs = new JTabbedPane();
 		GridBagConstraints programStepTabsConstraints = new GridBagConstraints();
 		programStepTabsConstraints.gridx = 1;
 		programStepTabsConstraints.gridy = 2;
@@ -53,26 +52,27 @@ public class Main {
 		programStepTabsConstraints.weighty = 1.0;
 		programStepTabsConstraints.fill = GridBagConstraints.BOTH;
 
-		JButton newTabButton = new JButton("+");
-		GridBagConstraints newTabButtonConstraints = new GridBagConstraints();
-		newTabButtonConstraints.gridx = 2;
-		newTabButtonConstraints.gridy = 2;
-		newTabButton.addActionListener(new ActionListener() {
+		JButton newTabTab = new JButton("+");
+		newTabTab.setToolTipText("Create a new tab");
+		newTabTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				programSteps.add(new ProgramStepPanel(programStepTabs
-						.getTabCount(), programDisplay, dataLines));
-				programStepTabs.add("Step " + programStepTabs.getTabCount(),
-						programSteps.get(programStepTabs.getTabCount()));
+				programSteps.add(new ProgramStepPanel(programSteps.size(),
+						programDisplay, dataLines));
+				programStepTabs.insertTab(
+						"Step " + programStepTabs.getTabCount(), null,
+						programSteps.get(programStepTabs.getTabCount() - 1),
+						null, programStepTabs.getTabCount() - 1);
 			}
 		});
+		programStepTabs.addTab(null, null);
+		programStepTabs.setTabComponentAt(0, newTabTab);
 
 		mainPane.add(mainMenu, mainMenuConstraints);
 		mainPane.add(statusLabel, statusLabelConstraints);
 		mainPane.add(programDisplay, programDisplayConstraints);
 		mainPane.add(programStepTabs, programStepTabsConstraints);
-		mainPane.add(newTabButton, newTabButtonConstraints);
 
-		//mainWindow.setSize(1024, 768);
+		// mainWindow.setSize(1024, 768);
 		mainWindow.pack();
 		mainWindow.setVisible(true);
 	}
