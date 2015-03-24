@@ -6,7 +6,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
-public class MainMenu extends JMenuBar implements ActionListener {
+public class MainMenu extends JMenuBar {
 
 	public MainMenu() {
 		JMenu fileMenu = new JMenu("File");
@@ -17,11 +17,11 @@ public class MainMenu extends JMenuBar implements ActionListener {
 		JMenu analogPartMenu = new JMenu("Analog");
 		
 		JMenuItem lm741 = new JMenuItem("LM741");
-		lm741.addActionListener(this);
+		lm741.addActionListener(new PartMenuListener());
 		analogPartMenu.add(lm741);
 		
 		JMenuItem op07d = new JMenuItem("OP07D");
-		op07d.addActionListener(this);
+		op07d.addActionListener(new PartMenuListener());
 		analogPartMenu.add(op07d);
 		
 		partMenu.add(analogPartMenu);
@@ -29,11 +29,11 @@ public class MainMenu extends JMenuBar implements ActionListener {
 		JMenu mixedSignalPartMenu = new JMenu("Mixed Signal");
 		
 		JMenuItem mpc6541 = new JMenuItem("MPC6541");
-		mpc6541.addActionListener(this);
+		mpc6541.addActionListener(new PartMenuListener());
 		mixedSignalPartMenu.add(mpc6541);
 		
 		JMenuItem tlv5616 = new JMenuItem("TLV5616");
-		tlv5616.addActionListener(this);
+		tlv5616.addActionListener(new PartMenuListener());
 		mixedSignalPartMenu.add(tlv5616);
 		
 		JMenuItem ads7822 = new JMenuItem("ADS7822");
@@ -116,14 +116,43 @@ public class MainMenu extends JMenuBar implements ActionListener {
 		this.add(testMenu);
 		
 		JMenuItem run = new JMenuItem("Run");
-		run.addActionListener(this);
+		run.addActionListener(new RunMenuListener());
 		this.add(run);
 	}
+}
 
+final class FileMenuListener implements ActionListener
+{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		
+	}	
+}
 
-	}
+final class PartMenuListener implements ActionListener
+{
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}	
+}
 
+final class TestMenuListener implements ActionListener
+{
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}	
+}
+
+final class RunMenuListener implements ActionListener
+{
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}	
 }
