@@ -1,4 +1,7 @@
+package testProgram;
 import javax.swing.*;
+
+import programSteps.ProgramStepPanel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -6,23 +9,20 @@ import java.util.ArrayList;
 
 public class Main {
 
+	public static JFrame mainWindow = new JFrame("ATE Simulator");
+	public static JLabel statusLabel = new JLabel();
+	public static JTextPane programDisplay = new JTextPane();
+	public static ArrayList<String> dataLines = new ArrayList<String>();
+	public static ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
+	
 	public static void main(String[] args) {
-		JFrame mainWindow = new JFrame("ATE Simulator");
-		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		Container mainPane = mainWindow.getContentPane();
 		GridBagLayout mainPaneLayout = new GridBagLayout();
 		mainPane.setLayout(mainPaneLayout);
 
-		MainMenu mainMenu = new MainMenu();
-		GridBagConstraints mainMenuConstraints = new GridBagConstraints();
-		mainMenuConstraints.gridx = 0;
-		mainMenuConstraints.gridy = 0;
-		mainMenuConstraints.weightx = 1.0;
-		mainMenuConstraints.weighty = 0.0;
-		mainMenuConstraints.gridwidth = GridBagConstraints.REMAINDER;
-		mainMenuConstraints.fill = GridBagConstraints.HORIZONTAL;
+		mainWindow.setJMenuBar(new MainMenu());
 
-		JLabel statusLabel = new JLabel();
 		GridBagConstraints statusLabelConstraints = new GridBagConstraints();
 		statusLabelConstraints.gridx = 0;
 		statusLabelConstraints.gridy = 1;
@@ -32,7 +32,6 @@ public class Main {
 		statusLabelConstraints.fill = GridBagConstraints.HORIZONTAL;
 		statusLabel.setText("Part: ; Test: ");
 
-		JTextPane programDisplay = new JTextPane();
 		GridBagConstraints programDisplayConstraints = new GridBagConstraints();
 		programDisplayConstraints.gridx = 0;
 		programDisplayConstraints.gridy = 2;
@@ -42,8 +41,6 @@ public class Main {
 		programDisplay.setPreferredSize(new Dimension(400, 768));
 		programDisplay.setEditable(false);
 
-		ArrayList<String> dataLines = new ArrayList<String>();
-		ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 		JTabbedPane programStepTabs = new JTabbedPane();
 		GridBagConstraints programStepTabsConstraints = new GridBagConstraints();
 		programStepTabsConstraints.gridx = 1;
@@ -56,23 +53,21 @@ public class Main {
 		newTabTab.setToolTipText("Create a new tab");
 		newTabTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				programSteps.add(new ProgramStepPanel(programSteps.size(),
-						programDisplay, dataLines));
+				programSteps.add(new ProgramStepPanel(programSteps.size()));
 				programStepTabs.insertTab(
 						"Step " + programStepTabs.getTabCount(), null,
 						programSteps.get(programStepTabs.getTabCount() - 1),
 						null, programStepTabs.getTabCount() - 1);
+				programStepTabs.setSelectedIndex(programStepTabs.getTabCount() - 2);
 			}
 		});
 		programStepTabs.addTab(null, null);
 		programStepTabs.setTabComponentAt(0, newTabTab);
 
-		mainPane.add(mainMenu, mainMenuConstraints);
 		mainPane.add(statusLabel, statusLabelConstraints);
 		mainPane.add(programDisplay, programDisplayConstraints);
 		mainPane.add(programStepTabs, programStepTabsConstraints);
 
-		// mainWindow.setSize(1024, 768);
 		mainWindow.pack();
 		mainWindow.setVisible(true);
 	}
