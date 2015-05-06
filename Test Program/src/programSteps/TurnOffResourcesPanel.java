@@ -38,7 +38,9 @@ public class TurnOffResourcesPanel extends JPanel {
 		this.add(vS);
 		turnOffResourcesArray.add(vS);
 		vS.addActionListener(new TurnOffResourcesListener());
-		textLineNumber = Main.programSteps.size();
+		textLineNumber = Main.programSteps.getTabCount() - 1;
+		vS.doClick();
+		vS.doClick();
 	}
 	
 	private class TurnOffResourcesListener implements ActionListener {

@@ -1,18 +1,15 @@
 package vectorEditor;
 import java.awt.Container;
 import java.awt.HeadlessException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class VectorEditor extends JFrame {
 
+	public JTabbedPane sheets = new JTabbedPane();
+	
 	public VectorEditor() throws HeadlessException {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setTitle("Vector Editor");
@@ -21,14 +18,104 @@ public class VectorEditor extends JFrame {
 
 		setJMenuBar(new VectorEditorMenu());
 
-		JTabbedPane sheets = new JTabbedPane();
 		JButton newTabTab = new JButton("+");
 		newTabTab.setToolTipText("Create a new sheet");
 		newTabTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VectorTable table = new VectorTable();
-				sheets.insertTab("Sheet " + sheets.getTabCount(), null,
-						new JScrollPane(new JTable(new VectorTable())), null, sheets.getTabCount() - 1);
+				JTable table = new JTable(new VectorTableModel());
+				table.setCellSelectionEnabled(true);
+				sheets.insertTab(null, null, new JScrollPane(table), null, sheets.getTabCount() - 1);
+				
+				JPanel titlePanel = new JPanel();
+				JTextField titleText = new JTextField("Sheet" + (sheets.getTabCount() - 1));
+				titleText.setEditable(false);
+				
+				JPopupMenu titleMenu = new JPopupMenu();
+				titleMenu.addFocusListener(new FocusListener() {
+					@Override
+					public void focusGained(FocusEvent arg0) {
+					}
+
+					@Override
+					public void focusLost(FocusEvent arg0) {
+						titleMenu.setVisible(false);
+					}
+				});
+				
+				JMenuItem editTitle = new JMenuItem("Rename Sheet");
+				editTitle.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						titleText.setEditable(true);
+					}
+				});
+				titleMenu.add(editTitle);
+				
+				titleText.addFocusListener(new FocusListener() {
+					@Override
+					public void focusGained(FocusEvent arg0) {
+					}
+
+					@Override
+					public void focusLost(FocusEvent arg0) {
+						titleText.setEditable(false);
+					}
+					
+				});
+				titleText.addMouseListener(new MouseListener() {
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						if(arg0.getButton() == MouseEvent.BUTTON3) {
+							titleMenu.setLocation(arg0.getLocationOnScreen());
+							titleMenu.setInvoker(titleText);
+							titleMenu.setVisible(true);
+						}
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent arg0) {
+					}
+
+					@Override
+					public void mouseExited(MouseEvent arg0) {
+					}
+
+					@Override
+					public void mousePressed(MouseEvent arg0) {
+					}
+
+					@Override
+					public void mouseReleased(MouseEvent arg0) {
+					}
+				});
+				/*titleText.addKeyListener(new KeyListener() {
+					@Override
+					public void keyPressed(KeyEvent arg0) {
+					}
+
+					@Override
+					public void keyReleased(KeyEvent arg0) {
+					}
+
+					@Override
+					public void keyTyped(KeyEvent arg0) {
+						if(arg0.getKeyCode() == KeyEvent.VK_ENTER)
+							titleText.setEditable(false);
+					}
+				});*/
+				
+				JButton titleButton = new JButton("x");
+				titleButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent arg0) {
+						sheets.remove(sheets.indexOfTabComponent(titleButton.getParent()));
+					}
+				});
+				
+				titlePanel.add(titleText);
+				titlePanel.add(titleButton);
+				
+				sheets.setTabComponentAt(sheets.getTabCount() - 2, titlePanel);
 				sheets.setSelectedIndex(sheets.getTabCount() - 2);
 			}
 		});
@@ -37,7 +124,10 @@ public class VectorEditor extends JFrame {
 		vecEditPane.add(sheets);
 
 		pack();
-		setVisible(true);
 	}
-
+	
+	public VectorTableModel getTableModel(int pane)
+	{
+		return (VectorTableModel) ((JTable) ((JViewport) ((JScrollPane) sheets.getComponentAt(pane)).getComponent(0)).getComponent(0)).getModel();
+	}
 }

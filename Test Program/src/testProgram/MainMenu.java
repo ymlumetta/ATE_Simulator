@@ -8,8 +8,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import vectorEditor.VectorEditor;
-
 @SuppressWarnings("serial")
 public class MainMenu extends JMenuBar {
 
@@ -124,7 +122,7 @@ public class MainMenu extends JMenuBar {
 		vecEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				new VectorEditor();
+				Main.vecEdit.setVisible(true);
 			}
 		});
 		this.add(vecEdit);
@@ -146,21 +144,14 @@ public class MainMenu extends JMenuBar {
 	private class PartMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			String stat = Main.statusLabel.getText();
-			stat = stat.substring(0, 6)
-					+ ((JMenuItem) arg0.getSource()).getText()
-					+ stat.substring(stat.indexOf("; Test: "));
-			Main.statusLabel.setText(stat);
+			Main.setPart(((JMenuItem) arg0.getSource()).getText());
 		}
 	}
 
 	private class TestMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			String stat = Main.statusLabel.getText();
-			stat = stat.substring(0, stat.indexOf("Test:") + 6)
-					+ ((JMenuItem) arg0.getSource()).getText();
-			Main.statusLabel.setText(stat);
+			Main.setTest(((JMenuItem) arg0.getSource()).getText());
 		}
 	}
 

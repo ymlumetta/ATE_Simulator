@@ -7,21 +7,21 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class ProgramStepPanel extends JPanel {
 
-	int textLineNumber;
-	JComboBox<String> stepType = new JComboBox<String>(new String[] { " ",
+	public int textLineNumber;
+	public JComboBox<String> stepType = new JComboBox<String>(new String[] { " ",
 			"Open Relays", "Close Relays", "Set Voltage", "Set Current",
 			"Wait", "Measure Voltage", "Measure Current", "Math",
 			"Datalog", "Turn Off Resources" });
 
 	public ProgramStepPanel(int lineNumber) {
 		stepType.addActionListener(new stepTypeListener());
-		this.add(stepType);
+		add(stepType);
 		textLineNumber = lineNumber;
 	}
 
 	public void setType(String type) {
 		stepType.setSelectedItem((Object) type);
-		//stepType.actionPerformed(new ActionEvent(this, 0, "Selected item changed"));
+		remove(getComponentCount() - 1);
 	}
 	
 	private class stepTypeListener implements ActionListener {

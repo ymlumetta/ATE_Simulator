@@ -38,6 +38,7 @@ public class MeasureVoltagePanel extends JPanel {
 	}
 	
 	public MeasureVoltagePanel(ArrayList<String> measV) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField numberOfSamplesV = new JTextField();
 		numberOfSamplesV.setText(measV.get(0));
 		this.add(numberOfSamplesV);
@@ -51,12 +52,11 @@ public class MeasureVoltagePanel extends JPanel {
 				new MeasureVoltageListener());
 		measureVoltageArray.add(timeBetweenSamplesV);
 		JTextField variableNameV = new JTextField();
-		variableNameV.setText(measV.get(2));
 		this.add(variableNameV);
 		measureVoltageArray.add(variableNameV);
 		variableNameV.getDocument().addDocumentListener(
 				new MeasureVoltageListener());
-		textLineNumber = Main.programSteps.size();
+		variableNameV.setText(measV.get(2));
 	}
 	
 	private class MeasureVoltageListener implements DocumentListener {

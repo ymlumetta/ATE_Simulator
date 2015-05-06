@@ -41,6 +41,7 @@ public class SetCurrentPanel extends JPanel {
 	}
 	
 	public SetCurrentPanel(ArrayList<String> setI) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField whereC = new JTextField();
 		whereC.setText(setI.get(0));
 		this.add(whereC);
@@ -59,11 +60,10 @@ public class SetCurrentPanel extends JPanel {
 		voltageRangeC.addActionListener(new setCurrentListener());
 		JComboBox<String> currentRangeC = new JComboBox<String>(
 				new String[] { "1 mA", "10 mA", "100 mA", "1 A", "5 A" });
-		currentRangeC.setSelectedItem((Object) setI.get(3));
 		this.add(currentRangeC);
 		setCurrentArray.add(currentRangeC);
 		currentRangeC.addActionListener(new setCurrentListener());
-		textLineNumber = Main.programSteps.size();
+		currentRangeC.setSelectedItem((Object) setI.get(3));
 	}
 	
 	private class setCurrentListener implements ActionListener {

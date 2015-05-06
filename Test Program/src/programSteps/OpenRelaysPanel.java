@@ -47,7 +47,9 @@ public class OpenRelaysPanel extends JPanel {
 		openRelaysArray.add(RO3);
 		this.add(RO3);
 		RO3.addActionListener(new openRelaysListener());
-		textLineNumber = Main.programSteps.size();
+		textLineNumber = Main.programSteps.getTabCount() - 1;
+		RO3.doClick();
+		RO3.doClick();
 	}
 
 	private class openRelaysListener implements ActionListener {

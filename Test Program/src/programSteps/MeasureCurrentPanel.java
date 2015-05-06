@@ -38,6 +38,7 @@ public class MeasureCurrentPanel extends JPanel {
 	}
 	
 	public MeasureCurrentPanel(ArrayList<String> measI) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField numberOfSamplesC = new JTextField();
 		numberOfSamplesC.setText(measI.get(0));
 		this.add(numberOfSamplesC);
@@ -51,12 +52,11 @@ public class MeasureCurrentPanel extends JPanel {
 				new MeasureCurrentListener());
 		measureCurrentArray.add(timeBetweenSamplesC);
 		JTextField variableNameC = new JTextField();
-		variableNameC.setText(measI.get(2));
 		this.add(variableNameC);
 		measureCurrentArray.add(variableNameC);
 		variableNameC.getDocument().addDocumentListener(
 				new MeasureCurrentListener());
-		textLineNumber = Main.programSteps.size();
+		variableNameC.setText(measI.get(2));
 	}
 	
 	private class MeasureCurrentListener implements DocumentListener {

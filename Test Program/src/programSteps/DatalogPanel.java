@@ -25,13 +25,13 @@ public class DatalogPanel extends JPanel {
 	}
 	
 	public DatalogPanel(ArrayList<String> datalog) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField whatVariable = new JTextField();
-		whatVariable.setText(datalog.get(0));
 		this.add(whatVariable);
 		datalogArray.add(whatVariable);
 		whatVariable.getDocument().addDocumentListener(
 				new DatalogListener());
-		textLineNumber = Main.programSteps.size();
+		whatVariable.setText(datalog.get(0));
 	}
 	
 	private class DatalogListener implements DocumentListener {

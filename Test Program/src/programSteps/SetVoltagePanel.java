@@ -41,6 +41,7 @@ public class SetVoltagePanel extends JPanel {
 	}
 	
 	public SetVoltagePanel(ArrayList<String> setV) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField whereV = new JTextField();
 		whereV.setText(setV.get(0));
 		this.add(whereV);
@@ -59,11 +60,10 @@ public class SetVoltagePanel extends JPanel {
 		voltageRangeV.addActionListener(new setVoltageListener());
 		JComboBox<String> currentRangeV = new JComboBox<String>(
 				new String[] { "1 mA", "10 mA", "100 mA", "1 A", "5 A" });
-		currentRangeV.setSelectedItem((Object) setV.get(3));
 		this.add(currentRangeV);
 		setVoltageArray.add(currentRangeV);
 		currentRangeV.addActionListener(new setVoltageListener());
-		textLineNumber = Main.programSteps.size();
+		currentRangeV.setSelectedItem((Object) setV.get(3));
 	}
 	
 	private class setVoltageListener implements ActionListener {

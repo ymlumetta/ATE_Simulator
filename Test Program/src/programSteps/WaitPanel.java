@@ -25,13 +25,13 @@ public class WaitPanel extends JPanel {
 	}
 	
 	public WaitPanel(ArrayList<String> wait) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JComboBox<String> Wait = new JComboBox<String>(new String[] {
 				"10 us", "100 us", "1000 us", "10000 us" });
-		Wait.setSelectedItem((Object) wait.get(0));
 		waitArray.add(Wait);
 		this.add(Wait);
 		Wait.addActionListener(new waitActionListener());
-		textLineNumber = Main.programSteps.size();
+		Wait.setSelectedItem((Object) wait.get(0));
 	}
 	
 	private class waitActionListener implements ActionListener {

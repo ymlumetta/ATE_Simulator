@@ -47,7 +47,9 @@ public class CloseRelaysPanel extends JPanel {
 		closeRelaysArray.add(RC3);
 		this.add(RC3);
 		RC3.addActionListener(new closeRelaysListener());
-		textLineNumber = Main.programSteps.size();
+		textLineNumber = Main.programSteps.getTabCount() - 1;
+		RC3.doClick();
+		RC3.doClick();
 	}
 
 	private class closeRelaysListener implements ActionListener {

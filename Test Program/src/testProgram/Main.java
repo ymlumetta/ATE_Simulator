@@ -2,6 +2,7 @@ package testProgram;
 import javax.swing.*;
 
 import programSteps.ProgramStepPanel;
+import vectorEditor.VectorEditor;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -12,8 +13,9 @@ public class Main {
 	public static JFrame mainWindow = new JFrame("ATE Simulator");
 	public static JLabel statusLabel = new JLabel();
 	public static JTextPane programDisplay = new JTextPane();
+	public static JTabbedPane programSteps = new JTabbedPane();
+	public static VectorEditor vecEdit = new VectorEditor();
 	public static ArrayList<String> dataLines = new ArrayList<String>();
-	public static ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 	
 	public static void main(String[] args) {
 		mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -41,35 +43,76 @@ public class Main {
 		programDisplay.setPreferredSize(new Dimension(400, 768));
 		programDisplay.setEditable(false);
 
-		JTabbedPane programStepTabs = new JTabbedPane();
-		GridBagConstraints programStepTabsConstraints = new GridBagConstraints();
-		programStepTabsConstraints.gridx = 1;
-		programStepTabsConstraints.gridy = 2;
-		programStepTabsConstraints.weightx = 1.0;
-		programStepTabsConstraints.weighty = 1.0;
-		programStepTabsConstraints.fill = GridBagConstraints.BOTH;
+		GridBagConstraints programStepsConstraints = new GridBagConstraints();
+		programStepsConstraints.gridx = 1;
+		programStepsConstraints.gridy = 2;
+		programStepsConstraints.weightx = 1.0;
+		programStepsConstraints.weighty = 1.0;
+		programStepsConstraints.fill = GridBagConstraints.BOTH;
 
 		JButton newTabTab = new JButton("+");
 		newTabTab.setToolTipText("Create a new tab");
 		newTabTab.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				programSteps.add(new ProgramStepPanel(programSteps.size()));
-				programStepTabs.insertTab(
-						"Step " + programStepTabs.getTabCount(), null,
-						programSteps.get(programStepTabs.getTabCount() - 1),
-						null, programStepTabs.getTabCount() - 1);
-				programStepTabs.setSelectedIndex(programStepTabs.getTabCount() - 2);
+				programSteps.insertTab(null, null, new ProgramStepPanel(programSteps.getTabCount() - 1), null, programSteps.getTabCount() - 1);
+				
+				JPanel titlePanel = new JPanel();
+				JTextField titleText = new JTextField("Step " + (programSteps.getTabCount() - 1));
+				titleText.setEditable(false);
+				JButton titleButton = new JButton("x");
+				titleButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						if(dataLines.size() > programSteps.indexOfComponent(titleButton.getParent()))
+							dataLines.remove(programSteps.indexOfTabComponent(titleButton.getParent()));
+						programSteps.remove(programSteps.indexOfTabComponent(titleButton.getParent()));
+					}
+				});
+				titlePanel.add(titleText);
+				titlePanel.add(titleButton);
+				
+				programSteps.setTabComponentAt(programSteps.getTabCount() - 2, titlePanel);
+				programSteps.setSelectedIndex(programSteps.getTabCount() - 2);
 			}
 		});
-		programStepTabs.addTab(null, null);
-		programStepTabs.setTabComponentAt(0, newTabTab);
+		programSteps.addTab(null, null);
+		programSteps.setTabComponentAt(0, newTabTab);
 
 		mainPane.add(statusLabel, statusLabelConstraints);
 		mainPane.add(programDisplay, programDisplayConstraints);
-		mainPane.add(programStepTabs, programStepTabsConstraints);
+		mainPane.add(programSteps, programStepsConstraints);
 
 		mainWindow.pack();
 		mainWindow.setVisible(true);
 	}
-
+	
+	public static String getPart()
+	{
+		if(statusLabel.getText().indexOf(';') > 6)
+			return statusLabel.getText().substring(statusLabel.getText().indexOf("Part:") + 6, statusLabel.getText().indexOf(';'));
+		else
+			return "";
+	}
+	
+	public static String getTest()
+	{
+		return statusLabel.getText().substring(statusLabel.getText().indexOf("Test:") + 6);
+	}
+	
+	public static void setPart(String part)
+	{
+		String status;
+		status = statusLabel.getText().substring(0, statusLabel.getText().indexOf("Part:") + 6);
+		status = status.concat(part);
+		status = status.concat(statusLabel.getText().substring(statusLabel.getText().indexOf(';')));
+		statusLabel.setText(status);
+	}
+	
+	public static void setTest(String test)
+	{
+		String status;
+		status = statusLabel.getText().substring(0, statusLabel.getText().indexOf("Test:") + 6);
+		status = status.concat(test);
+		statusLabel.setText(status);
+	}
 }

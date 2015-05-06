@@ -25,12 +25,12 @@ public class MathPanel extends JPanel {
 	}
 	
 	public MathPanel(ArrayList<String> equation) {
+		textLineNumber = Main.programSteps.getTabCount() - 1;
 		JTextField math = new JTextField();
-		math.setText(equation.get(0));
 		this.add(math);
 		mathArray.add(math);
 		math.getDocument().addDocumentListener(new MathListener());
-		textLineNumber = Main.programSteps.size();
+		math.setText(equation.get(0));
 	}
 	
 	private class MathListener implements DocumentListener {
