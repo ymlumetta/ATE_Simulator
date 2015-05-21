@@ -7,12 +7,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 import vectorEditor.VectorEditor;
 
 @SuppressWarnings("serial")
 public class MainMenu extends JMenuBar {
 
+	String part;
+	String test;
+	
 	public MainMenu() {
 		this.add(new FileMenu());
 
@@ -151,6 +155,7 @@ public class MainMenu extends JMenuBar {
 					+ ((JMenuItem) arg0.getSource()).getText()
 					+ stat.substring(stat.indexOf("; Test: "));
 			Main.statusLabel.setText(stat);
+			part = ((JMenuItem) arg0.getSource()).getText();
 		}
 	}
 
@@ -161,13 +166,101 @@ public class MainMenu extends JMenuBar {
 			stat = stat.substring(0, stat.indexOf("Test:") + 6)
 					+ ((JMenuItem) arg0.getSource()).getText();
 			Main.statusLabel.setText(stat);
+			test = ((JMenuItem) arg0.getSource()).getText();
 		}
 	}
 
 	private class RunMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Auto-generated method stub
+			switch(part){
+				case "LM741":
+					switch(test){
+						case "Continuity":
+							if(Main.dataLines.toString().equals("[Close Relays 1 3\n, Wait for 100 us\n, Set Current at ContGP 1 mA, V Range 10 V, I Range 10 mA\n, Wait for 100 us\n, Take 5 samples measuring every 5 us, store as variable Cont_Data\n, Datalog Cont_Data\n, Turn off  Current Sources\n, Wait for 100 us\n, Open Relays 1 3\n]")){
+								JOptionPane.showMessageDialog(getParent(),
+									"Part: LM741, Test: Continuity \n"
+									+ "Results: Pass 0.687 V");
+							}else{
+								JOptionPane.showMessageDialog(getParent(),
+										"Part: LM741, Test: Continuity \n"
+										+ "Results: Fail 9.23 V");
+							}
+								
+							break;
+						case "Offset":
+							
+							break;
+						case "Gain Bandwidth":
+							
+							break;
+						case "Common Mode Rejection Ratio":
+							
+							break;
+						case "Power Supply Rejection Ratio":
+							
+							break;
+						case "Open Loop Gain":
+							
+							break;
+						case "Input Bias Current":
+							
+							break;
+						case "Total Harmonic Distortion":
+							
+							break;
+					}
+					break;
+				case "OP07D":
+					switch(test){
+						case "Continuity":
+							if(Main.dataLines.toString().equals("[Close Relays 1 2 3\n, Wait for 100 us\n, Set Current at ContGP 1 mA, V Range 10 V, I Range 10 mA\n, Wait for 100 us\n, Take 5 samples measuring every 5 us, store as variable Cont_Data\n, Datalog Cont_Data\n, Turn off  Current Sources\n, Wait for 100 us\n, Open Relays 1 2 3\n]")){
+								JOptionPane.showMessageDialog(getParent(),
+									"Part: OP07D, Test: Continuity \n"
+									+ "Results: Pass 0.687 V");
+							}else{
+								JOptionPane.showMessageDialog(getParent(),
+										"Part: OP07D, Test: Continuity \n"
+										+ "Results: Fail 9.23 V");
+							}
+							break;
+						case "Offset":
+						
+							break;
+						case "Gain Bandwidth":
+						
+							break;
+						case "Common Mode Rejection Ratio":
+						
+							break;
+						case "Power Supply Rejection Ratio":
+						
+							break;
+						case "Open Loop Gain":
+						
+							break;
+						case "Input Bias Current":
+						
+							break;
+						case "Total Harmonic Distortion":
+						
+							break;
+					}
+					break;
+				case "MCP6541":
+					
+					break;
+				case "TLV5616":
+					
+					break;
+				case "ADS7822":
+					
+					break;
+				case "PIC16F883":
+					
+					break;
+			}
+			
 		}
 	}
 }
