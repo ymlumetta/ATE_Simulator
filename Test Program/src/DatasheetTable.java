@@ -48,6 +48,7 @@ public class DatasheetTable extends AbstractTableModel {
 		private double upper = 0.0;
 		private String unit = "";
 		
+		@SuppressWarnings("unused")
 		public Row() {
 			
 		}

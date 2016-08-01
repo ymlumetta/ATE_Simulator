@@ -2,7 +2,6 @@ package testProgram;
 import javax.swing.*;
 
 import programSteps.ProgramStepPanel;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -16,7 +15,11 @@ public class Main {
 	public static ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 	
 	public static void main(String[] args) {
+		
+		
+		
 		mainWindow.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//		mainWindow.setLocationRelativeTo(null);
 		Container mainPane = mainWindow.getContentPane();
 		GridBagLayout mainPaneLayout = new GridBagLayout();
 		mainPane.setLayout(mainPaneLayout);

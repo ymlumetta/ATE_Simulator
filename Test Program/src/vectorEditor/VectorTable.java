@@ -51,7 +51,7 @@ public class VectorTable extends AbstractTableModel {
 	}
 	
 	@Override
-	public Class getColumnClass(int c) {
+	public Class<? extends Object> getColumnClass(int c) {
 		return getValueAt(0, c).getClass();
 	}
 	
