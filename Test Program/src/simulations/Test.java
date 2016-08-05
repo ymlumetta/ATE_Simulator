@@ -14,6 +14,7 @@ import testProgram.Main;
 public class Test {
 	String url;
 	ArrayList<String> param = Main.dataLines;
+	Error stepsError = new Error("Incorrect Step Order or Not Enough Steps");
 	
 	private Random randomGenerator;	
 	
@@ -26,7 +27,7 @@ public class Test {
 	
 	public void run(){
 		parseSteps();
-		findTables(url);
+//		findTables(url);
 	}
 	
 	

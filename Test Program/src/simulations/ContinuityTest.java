@@ -1,7 +1,6 @@
 package simulations;
 
 public class ContinuityTest extends Test {
-	Error error = new Error("Incorrect Step Order or Not Enough Steps");
 	
 	public ContinuityTest(){
 		this.url = "http://granthudson.github.io/data/comparator/continuity.html";
@@ -14,12 +13,12 @@ public class ContinuityTest extends Test {
 		int i = 0;
 		
 		if(param.isEmpty()){
-			error.toss();
+			stepsError.toss();
 			return;
 		}
 		
-		if(!param.get(i).toString().equals("Close Relays\n")){
-			error.toss();
+		if(i>param.size() || !param.get(i).toString().equals("Close Relays\n")){
+			stepsError.toss();
 			return;
 		}	
 		
@@ -27,7 +26,8 @@ public class ContinuityTest extends Test {
 		
 		
 		i++;
-		if(!param.get(i).toString().equals("Open Relays\n")){
+		if(i>param.size() || (!param.get(i).toString().equals("Open Relays\n"))){
+			stepsError.toss();
 			return;
 		}
 		

@@ -22,6 +22,7 @@ public class Error {
 		errorWindow.setLocationRelativeTo(null);
 		
 		errorWindow.setName("Error!");
+		errorWindow.add(new JOptionPane(message));
 		
 		errorWindow.pack();
 		errorWindow.setVisible(true);
