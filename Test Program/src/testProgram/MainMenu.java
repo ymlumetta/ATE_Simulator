@@ -16,7 +16,7 @@ public class MainMenu extends JMenuBar {
 
 
 	public MainMenu() {
-		this.add(new FileMenu());
+//		this.add(new FileMenu());
 		
 		JMenu testMenu = new JMenu("Test");
 
@@ -132,22 +132,28 @@ public class MainMenu extends JMenuBar {
 	private class TestMenuListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
+			
+			String test = ((JMenuItem) arg0.getSource()).getText();
+			
 			String stat = Main.statusLabel.getText();
 			stat = stat.substring(0, stat.indexOf("Test:") + 6)
-					+ ((JMenuItem) arg0.getSource()).getText();			
+					+ test;			
 			Main.statusLabel.setText(stat);
 			
 			
 			JMenuItem eventFrom = (JMenuItem)arg0.getSource();
 			JPopupMenu fromParent = (JPopupMenu)eventFrom.getParent();
 			JMenu foo = (JMenu)fromParent.getInvoker();
+			String part = foo.getName();
 			
 			
 			stat = stat.substring(0, 6)
-					+ foo.getName()
+					+ part
 					+ stat.substring(stat.indexOf("; Test: "));
 			
 			Main.statusLabel.setText(stat);
+			Main.test = test;
+			Main.part = part;
 		}
 	}
 
@@ -160,7 +166,7 @@ public class MainMenu extends JMenuBar {
 			String part = stat.substring(6, stat.indexOf(";"));
 			
 			SimRunner runner = new SimRunner();
-	
+
 			runner.runSim(test, part);
 		}
 	}

@@ -14,6 +14,9 @@ public class Main {
 	public static ArrayList<String> dataLines = new ArrayList<String>();
 	public static ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 	
+	public static String test;
+	public static String part;
+	
 	public static void main(String[] args) {
 		
 		

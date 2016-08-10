@@ -170,12 +170,12 @@ public class FileMenu extends JMenu {
 								case "Set Voltage":
 									step.setType("Set Voltage");
 									lines.remove(0);
-									step.add(new SetVoltagePanel(lines));
+//									step.add(new SetVoltagePanel(lines));
 									break;
 								case "Set Current":
 									step.setType("Set Current");
 									lines.remove(0);
-									step.add(new SetCurrentPanel(lines));
+//									step.add(new SetCurrentPanel(lines));
 									break;
 								case "Wait":
 									step.setType("Wait");
