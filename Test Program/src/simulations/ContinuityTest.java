@@ -1,5 +1,7 @@
 package simulations;
 
+import testProgram.Main;
+
 public class ContinuityTest extends Test {
 	
 	private int waitTime;
@@ -15,59 +17,65 @@ public class ContinuityTest extends Test {
 		int i = 0;
 		
 		if(param.isEmpty()){
-			stepsError.toss();
+			stepOrderError.toss();
 			return;
 		}
 		
-		if(i>param.size() || !param.get(i).toString().equals("Close Relays\n")){
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Close Relays")){
+			stepOrderError.toss();
 			return;
-		}	
+		}
+		
+		i++;		
+		if(!Main.programSteps.get(i).getName().equals("Wait")){
+			stepOrderError.toss();
+			return;
+		}
 		
 		
 		i++;		
-		if(i>param.size() || (!param.get(i).toString().substring(0, 4).equals("Wait"))){
-			stepsError.toss();
-			return;
-		}
-		
-		
-		i++;		
-		if(i>param.size() || (!param.get(i).toString().substring(0, 11).equals("Set Current"))){//set current source
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Set Current")){//set current source
+			stepOrderError.toss();
 			return;
 		}
 		
 		
 		i++;
-		if(i>param.size() || (!param.get(i).toString().substring(0,4).equals("Wait"))){
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Wait")){
+			stepOrderError.toss();
 			return;
 		}
 		
 		
 		i++;
-		if(i>param.size() || (!param.get(i).toString().substring(0, 4).equals("Take"))){//measure voltage source
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Measure Voltage")){//measure voltage source
+			stepOrderError.toss();
 			return;
 		}
 		
 		
 		i++;
-		if(i>param.size() || (!param.get(i).toString().substring(0, 7).equals("Datalog"))){//datalog
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Datalog")){//datalog
+			stepOrderError.toss();
 			return;
 		}
 		
 		i++;
-		if(i>param.size() || (!param.get(i).toString().equals("Turn Off Resources\n"))){//turn off equipment
-			stepsError.toss();
+		if(!Main.programSteps.get(i).getName().equals("Turn Off Resources")){//turn off equipment
+			stepOrderError.toss();
 			return;
 		}
 		
 		i++;
-		if(i>param.size() || (!param.get(i).toString().equals("Open Relays\n"))){
-			stepsError.toss();
+		
+		if(!Main.programSteps.get(i).getName().equals("Open Relays")){
+			stepOrderError.toss();
+			return;
+		}
+		
+		i++;
+		if(!(i==Main.programSteps.size())){
+			tooManyStepsError.toss();
 			return;
 		}
 		

@@ -32,7 +32,7 @@ public class TurnOffResourcesPanel extends JPanel {
 		cS.setSelected(new Boolean(resources.get(0)));
 		this.add(cS);
 		turnOffResourcesArray.add(cS);
-//		cS.addActionListener(new TurnOffResourcesListener());
+		cS.addActionListener(new TurnOffResourcesListener());
 //		JCheckBox vS = new JCheckBox("Voltage Sources");
 //		vS.setSelected(new Boolean(resources.get(1)));
 //		this.add(vS);

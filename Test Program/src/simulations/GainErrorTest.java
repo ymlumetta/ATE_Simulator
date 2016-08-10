@@ -12,12 +12,12 @@ public class GainErrorTest extends Test{
 		int i = 0;
 		
 		if(param.isEmpty()){
-			stepsError.toss();
+			stepOrderError.toss();
 			return;
 		}
 		
 		if(i>param.size() || !param.get(i).toString().equals("Close Relays\n")){
-			stepsError.toss();
+			stepOrderError.toss();
 			return;
 		}	
 		
@@ -26,7 +26,7 @@ public class GainErrorTest extends Test{
 		
 		i++;
 		if(i>param.size() || (!param.get(i).toString().equals("Open Relays\n"))){
-			stepsError.toss();
+			stepOrderError.toss();
 			return;
 		}
 		

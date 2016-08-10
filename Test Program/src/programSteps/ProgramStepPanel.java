@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class ProgramStepPanel extends JPanel {
-
+	
 	int textLineNumber;
 	JComboBox<String> stepType = new JComboBox<String>(new String[] { " ",
 			"Open Relays", "Close Relays", "Set Voltage", "Set Current",
@@ -17,11 +17,16 @@ public class ProgramStepPanel extends JPanel {
 		stepType.addActionListener(new stepTypeListener());
 		this.add(stepType);
 		textLineNumber = lineNumber;
+		this.setName("Empty Step");
 	}
 
 	public void setType(String type) {
 		stepType.setSelectedItem((Object) type);
 		//stepType.actionPerformed(new ActionEvent(this, 0, "Selected item changed"));
+	}
+	
+	private void giveName(String name){
+		this.setName(name);
 	}
 	
 	private class stepTypeListener implements ActionListener {
@@ -30,7 +35,11 @@ public class ProgramStepPanel extends JPanel {
 			while(((JComboBox<String>) e.getSource()).getParent()
 					.getComponentCount() > 1)
 				((JComboBox<String>) e.getSource()).getParent().remove(1);
-
+			
+			
+			giveName(((String) ((JComboBox<String>) e.getSource())
+					.getSelectedItem()));
+			
 			switch ((String) ((JComboBox<String>) e.getSource())
 					.getSelectedItem()) {
 			case "Open Relays":

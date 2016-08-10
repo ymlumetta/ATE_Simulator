@@ -14,7 +14,8 @@ import testProgram.Main;
 public class Test {
 	String url;
 	ArrayList<String> param = Main.dataLines;
-	Error stepsError = new Error("Incorrect Step Order or Not Enough Steps");
+	Error stepOrderError = new Error("Incorrect Step Order");
+	Error tooManyStepsError = new Error("Too Many Steps!");
 	
 	private Random randomGenerator;	
 	
