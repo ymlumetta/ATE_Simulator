@@ -7,8 +7,6 @@ import java.util.Iterator;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import testProgram.Main;
 
 @SuppressWarnings("serial")
@@ -17,6 +15,7 @@ public class SetVoltagePanel extends JPanel {
 	int textLineNumber;
 	ArrayList<Object> setVoltageArray = new ArrayList<Object>();
 	ArrayList<String> setVoltageDataLines = new ArrayList<String>();
+	int numberOfLines = 0;
 	
 	public SetVoltagePanel(int lineNumber) {
 		
@@ -66,7 +65,7 @@ public class SetVoltagePanel extends JPanel {
 //		this.add(currentRangeV);
 //		setVoltageArray.add(currentRangeV);
 //		currentRangeV.addActionListener(new setVoltageListener());
-//		textLineNumber = lineNumber;
+		textLineNumber = lineNumber;
 	}
 	
 //	public SetVoltagePanel(ArrayList<String> setV) {
@@ -95,28 +94,63 @@ public class SetVoltagePanel extends JPanel {
 //		textLineNumber = Main.programSteps.size();
 //	}
 	
+
+	
 	private class setVoltageListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
-			updateDataLines();
+			//does nothing~
 		}
 	}
-	
-	
 	
 	private class confirmListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			
+			String setCurrent = "Set Current";
+			Iterator<Object> sCAI = setVoltageArray.iterator();
+			setCurrent = setCurrent + " at "
+					+ ((JComboBox<?>) sCAI.next()).getSelectedItem();
+			setCurrent = setCurrent + " to "
+					+ ((JComboBox<?>) sCAI.next()).getSelectedItem() + ",";
+			
+			setCurrent = setCurrent + " V Range 10V,";
+			setCurrent = setCurrent + " I Range 10mA ";
+			
+			setCurrent = setCurrent + "\n";
+			
+			if(setVoltageDataLines.size() <= numberOfLines){
+				setVoltageDataLines.add(setCurrent);
+			} else{
+				setVoltageDataLines.set(numberOfLines, setCurrent);
+			}
+			
+			
+			
+			if (Main.dataLines.size() < textLineNumber + 1) {
+				Main.dataLines.add(textLineNumber, setVoltageDataLines.toString());
+			} else {
+				Main.dataLines.set(textLineNumber, setVoltageDataLines.toString());
+			}
+			Main.programDisplay.setText(Main.dataLines.toString());
+			
+			numberOfLines++;
 		}
 	}
+	
 	
 	
 	
 	private class clearListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			setVoltageDataLines.clear();
+			numberOfLines = 0;
+			
+			if(Main.dataLines.size() < textLineNumber + 1){
+				Main.dataLines.add(textLineNumber, setVoltageDataLines.toString());
+			} else {
+				Main.dataLines.set(textLineNumber, setVoltageDataLines.toString());
+			}
+			
+			Main.programDisplay.setText(Main.dataLines.toString());
 		}
 	}
 	
@@ -124,25 +158,5 @@ public class SetVoltagePanel extends JPanel {
 	
 	
 	
-	
-	
-	private void updateDataLines(){
-		String setVoltage = "Set Voltage";
-		Iterator<Object> sVAI = setVoltageArray.iterator();
-		setVoltage = setVoltage + " at "
-				+ ((JTextField) sVAI.next()).getText();
-		setVoltage = setVoltage + " "
-				+ ((JTextField) sVAI.next()).getText() + " V,";
-		setVoltage = setVoltage + " V Range "
-				+ ((JComboBox<String>) sVAI.next()).getSelectedItem() + ",";
-		setVoltage = setVoltage + " I Range "
-				+ ((JComboBox<String>) sVAI.next()).getSelectedItem();
-		setVoltage = setVoltage + "\n";
-		if (Main.dataLines.size() < textLineNumber + 1) {
-			Main.dataLines.add(textLineNumber, setVoltage);
-		} else {
-			Main.dataLines.set(textLineNumber, setVoltage);
-		}
-		Main.programDisplay.setText(Main.dataLines.toString());
-	}
+
 }

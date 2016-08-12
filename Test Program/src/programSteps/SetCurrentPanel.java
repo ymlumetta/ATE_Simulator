@@ -7,8 +7,6 @@ import java.util.Iterator;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
 import testProgram.Main;
 
 @SuppressWarnings("serial")
@@ -17,6 +15,7 @@ public class SetCurrentPanel extends JPanel {
 	int textLineNumber;
 	ArrayList<Object> setCurrentArray = new ArrayList<Object>();
 	ArrayList<String> setCurrentDataLines = new ArrayList<String>();
+	int numberOfLines = 0;
 	
 	public SetCurrentPanel(int lineNumber) {
 		
@@ -70,7 +69,9 @@ public class SetCurrentPanel extends JPanel {
 //		this.add(currentRangeC);
 //		setCurrentArray.add(currentRangeC);
 //		currentRangeC.addActionListener(new setCurrentListener());
-//		textLineNumber = lineNumber;
+		
+		
+		textLineNumber = lineNumber;
 	}
 	
 //	public SetCurrentPanel(ArrayList<String> setI) {
@@ -100,41 +101,59 @@ public class SetCurrentPanel extends JPanel {
 //	}
 	
 	private class setCurrentListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
-//			String setCurrent = "Set Current";
-//			Iterator<Object> sCAI = setCurrentArray.iterator();
-//			setCurrent = setCurrent + " at "
-//					+ ((JTextField) sCAI.next()).getText();
-//			setCurrent = setCurrent + " "
-//					+ ((JTextField) sCAI.next()).getText() + " mA,";
-//			setCurrent = setCurrent + " V Range "
-//					+ ((JComboBox<String>) sCAI.next()).getSelectedItem() + ",";
-//			setCurrent = setCurrent + " I Range "
-//					+ ((JComboBox<String>) sCAI.next()).getSelectedItem();
-//			setCurrent = setCurrent + "\n";
-//			if (Main.dataLines.size() < textLineNumber + 1) {
-//				Main.dataLines.add(textLineNumber, setCurrent);
-//			} else {
-//				Main.dataLines.set(textLineNumber, setCurrent);
-//			}
-//			Main.programDisplay.setText(Main.dataLines.toString());
+			//does nothing~
 		}
 	}
 	
 	private class confirmListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
-			setCurrentDataLines.add("Set Current at "+e.toString()+"to");
+			
+			String setCurrent = "Set Current";
+			Iterator<Object> sCAI = setCurrentArray.iterator();
+			setCurrent = setCurrent + " at "
+					+ ((JComboBox<?>) sCAI.next()).getSelectedItem();
+			setCurrent = setCurrent + " to "
+					+ ((JComboBox<?>) sCAI.next()).getSelectedItem() + ",";
+			
+			setCurrent = setCurrent + " V Range 10V,";
+			setCurrent = setCurrent + " I Range 10mA ";
+			
+			setCurrent = setCurrent + "\n";
+			
+			if(setCurrentDataLines.size() <= numberOfLines){
+				setCurrentDataLines.add(setCurrent);
+			} else{
+				setCurrentDataLines.set(numberOfLines, setCurrent);
+			}
+			
+			
+			
+			if (Main.dataLines.size() < textLineNumber + 1) {
+				Main.dataLines.add(textLineNumber, setCurrentDataLines.toString());
+			} else {
+				Main.dataLines.set(textLineNumber, setCurrentDataLines.toString());
+			}
+			Main.programDisplay.setText(Main.dataLines.toString());
+			
+			numberOfLines++;
 		}
 	}
 	
 	
 	
 	private class clearListener implements ActionListener {
-		@SuppressWarnings("unchecked")
 		public void actionPerformed(ActionEvent e) {
 			setCurrentDataLines.clear();
+			numberOfLines = 0;
+			
+			if(Main.dataLines.size() < textLineNumber + 1){
+				Main.dataLines.add(textLineNumber, setCurrentDataLines.toString());
+			} else {
+				Main.dataLines.set(textLineNumber, setCurrentDataLines.toString());
+			}
+			
+			Main.programDisplay.setText(Main.dataLines.toString());
 		}
 	}
 	
