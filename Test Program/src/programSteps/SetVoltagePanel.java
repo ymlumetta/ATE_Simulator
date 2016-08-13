@@ -25,7 +25,7 @@ public class SetVoltagePanel extends JPanel {
 		pinList.addActionListener(new setVoltageListener());
 		
 		JComboBox<String> currentOptions = new JComboBox<String>(
-				new String[] {"", "0 V"});
+				new String[] {"Off", "0 V"});
 		this.add(currentOptions);
 		setVoltageArray.add(currentOptions);
 		currentOptions.addActionListener(new setVoltageListener());
@@ -104,7 +104,7 @@ public class SetVoltagePanel extends JPanel {
 	private class confirmListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			
-			String setCurrent = "Set Current";
+			String setCurrent = "Set Voltage";
 			Iterator<Object> sCAI = setVoltageArray.iterator();
 			setCurrent = setCurrent + " at "
 					+ ((JComboBox<?>) sCAI.next()).getSelectedItem();

@@ -25,7 +25,7 @@ public class SetCurrentPanel extends JPanel {
 		pinList.addActionListener(new setCurrentListener());
 		
 		JComboBox<String> currentOptions = new JComboBox<String>(
-				new String[] {"", "1 mA", "-1 mA"});
+				new String[] {"Off", "1 mA", "-1 mA"});
 		this.add(currentOptions);
 		setCurrentArray.add(currentOptions);
 		currentOptions.addActionListener(new setCurrentListener());
