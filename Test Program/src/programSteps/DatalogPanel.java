@@ -15,7 +15,7 @@ public class DatalogPanel extends JPanel {
 	ArrayList<Object> datalogArray = new ArrayList<Object>();
 	
 	public DatalogPanel(int lineNumber) {
-		JComboBox<String> whatVariable = new JComboBox<String>(getPinList());
+		JComboBox<String> whatVariable = new JComboBox<String>(Main.getPinList());
 		this.add(whatVariable);
 		datalogArray.add(whatVariable);
 		whatVariable.addActionListener(
@@ -24,7 +24,7 @@ public class DatalogPanel extends JPanel {
 	}
 	
 	public DatalogPanel(ArrayList<String> datalog) {
-		JComboBox<String> whatVariable = new JComboBox<String>(getPinList());
+		JComboBox<String> whatVariable = new JComboBox<String>(Main.getPinList());
 
 		this.add(whatVariable);
 		datalogArray.add(whatVariable);
@@ -77,17 +77,6 @@ public class DatalogPanel extends JPanel {
 //			}
 //			Main.programDisplay.setText(Main.dataLines.toString());
 //		}
-	}
-	
-	private static String[] getPinList(){
-		if(Main.test == null)
-			return Main.allPins;
-		switch(Main.test){
-		case "Continuity":
-			return Main.continuityPins;
-		default:
-			return Main.allPins;
-		}
 	}
 	
 	private static String getTestPrefix(){

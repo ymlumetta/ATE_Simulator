@@ -19,7 +19,7 @@ public class SetCurrentPanel extends JPanel {
 	
 	public SetCurrentPanel(int lineNumber) {
 		
-		JComboBox<String> pinList = new JComboBox<String>(getPinList());
+		JComboBox<String> pinList = new JComboBox<String>(Main.getPinList());
 		this.add(pinList);
 		setCurrentArray.add(pinList);
 		pinList.addActionListener(new setCurrentListener());
@@ -156,18 +156,6 @@ public class SetCurrentPanel extends JPanel {
 		}
 	}
 	
-	
-	
-	private static String[] getPinList(){
-		if(Main.test == null)
-			return Main.allPins;
-		switch(Main.test){
-		case "Continuity":
-			return Main.continuityPins;
-		default:
-			return Main.allPins;
-		}
-	}
 	
 	
 	

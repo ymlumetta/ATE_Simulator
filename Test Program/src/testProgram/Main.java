@@ -82,5 +82,17 @@ public class Main {
 		mainWindow.pack();
 		mainWindow.setVisible(true);
 	}
+	
+	
+	public static String[] getPinList(){
+		if(Main.test == null)
+			return Main.allPins;
+		switch(Main.test){
+		case "Continuity":
+			return Main.continuityPins;
+		default:
+			return Main.allPins;
+		}
+	}
 
 }
