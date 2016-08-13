@@ -159,6 +159,8 @@ public class SetCurrentPanel extends JPanel {
 	
 	
 	private static String[] getPinList(){
+		if(Main.test == null)
+			return Main.allPins;
 		switch(Main.test){
 		case "Continuity":
 			return Main.continuityPins;
