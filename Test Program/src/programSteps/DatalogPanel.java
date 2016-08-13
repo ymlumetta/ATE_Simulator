@@ -1,9 +1,12 @@
 package programSteps;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.AbstractButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import testProgram.Main;
@@ -13,23 +16,45 @@ public class DatalogPanel extends JPanel {
 
 	int textLineNumber;
 	ArrayList<Object> datalogArray = new ArrayList<Object>();
+	String[] pinList = Main.getPinList();
 	
 	public DatalogPanel(int lineNumber) {
-		JComboBox<String> whatVariable = new JComboBox<String>(Main.getPinList());
-		this.add(whatVariable);
-		datalogArray.add(whatVariable);
-		whatVariable.addActionListener(
-				new DatalogListener());
+		
+		for(String pin : pinList){
+			if(!pin.isEmpty()){
+				JCheckBox checkBox = new JCheckBox(pin);
+				this.add(checkBox);
+				datalogArray.add(checkBox);
+				checkBox.setName(pin);
+				checkBox.addActionListener(new DatalogListener());
+			}
+		}
+		
+//		JComboBox<String> whatVariable = new JComboBox<String>(pinList);
+//		this.add(whatVariable);
+//		datalogArray.add(whatVariable);
+//		whatVariable.addActionListener(
+//				new DatalogListener());
 		textLineNumber = lineNumber;
 	}
 	
 	public DatalogPanel(ArrayList<String> datalog) {
-		JComboBox<String> whatVariable = new JComboBox<String>(Main.getPinList());
-
-		this.add(whatVariable);
-		datalogArray.add(whatVariable);
-		whatVariable.addActionListener(
-				new DatalogListener());
+		
+		for(String pin : pinList){
+			JCheckBox checkBox = new JCheckBox(pin);
+			this.add(checkBox);
+			datalogArray.add(checkBox);
+			checkBox.setName(pin);
+			checkBox.addActionListener(new DatalogListener());
+		}
+		
+		
+//		JComboBox<String> whatVariable = new JComboBox<String>(Main.getPinList());
+//
+//		this.add(whatVariable);
+//		datalogArray.add(whatVariable);
+//		whatVariable.addActionListener(
+//				new DatalogListener());
 		textLineNumber = Main.programSteps.size();
 	}
 	
@@ -38,8 +63,17 @@ public class DatalogPanel extends JPanel {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			Iterator<Object> dAI = datalogArray.iterator();
-			String datalog = "Datalog " +getTestPrefix() + ((JComboBox<?>) dAI.next()).getSelectedItem();
+			String datalog = "Datalog";
+
+			do{
+				Object next =  dAI.next();
+				if(((AbstractButton) next).isSelected()){
+					datalog = datalog +  " " + getTestPrefix() + ((Component) next).getName();
+				}
+			}while(dAI.hasNext());
+			
 			datalog = datalog + "\n";
+			
 			if (Main.dataLines.size() < textLineNumber + 1) {
 				Main.dataLines.add(textLineNumber, datalog);
 			} else {
