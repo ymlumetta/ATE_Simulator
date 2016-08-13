@@ -14,6 +14,11 @@ public class Main {
 	public static ArrayList<String> dataLines = new ArrayList<String>();
 	public static ArrayList<ProgramStepPanel> programSteps = new ArrayList<ProgramStepPanel>();
 	
+	
+	public static String[] allPins = {"", "VCC", "VEE", "Vinp", "Vinm", "Vout"};
+	public static String[] continuityPins = {"", "VCC", "VEE","Vinp", "Vinm","Vout"};
+	
+	
 	public static String test;
 	public static String part;
 	

@@ -19,8 +19,7 @@ public class SetCurrentPanel extends JPanel {
 	
 	public SetCurrentPanel(int lineNumber) {
 		
-		JComboBox<String> pinList = new JComboBox<String>(
-				new String[] {"", "Vout", "Vinm", "Vinp"});
+		JComboBox<String> pinList = new JComboBox<String>(getPinList());
 		this.add(pinList);
 		setCurrentArray.add(pinList);
 		pinList.addActionListener(new setCurrentListener());
@@ -154,6 +153,17 @@ public class SetCurrentPanel extends JPanel {
 			}
 			
 			Main.programDisplay.setText(Main.dataLines.toString());
+		}
+	}
+	
+	
+	
+	private static String[] getPinList(){
+		switch(Main.test){
+		case "Continuity":
+			return Main.continuityPins;
+		default:
+			return Main.allPins;
 		}
 	}
 	

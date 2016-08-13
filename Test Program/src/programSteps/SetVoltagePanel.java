@@ -19,8 +19,7 @@ public class SetVoltagePanel extends JPanel {
 	
 	public SetVoltagePanel(int lineNumber) {
 		
-		JComboBox<String> pinList = new JComboBox<String>(
-				new String[] {"", "VCC", "VEE"});
+		JComboBox<String> pinList = new JComboBox<String>(getPinList());
 		this.add(pinList);
 		setVoltageArray.add(pinList);
 		pinList.addActionListener(new setVoltageListener());
@@ -155,7 +154,14 @@ public class SetVoltagePanel extends JPanel {
 	}
 	
 	
-	
+	private static String[] getPinList(){
+		switch(Main.test){
+		case "Continuity":
+			return Main.continuityPins;
+		default:
+			return Main.allPins;
+		}
+	}
 	
 	
 
