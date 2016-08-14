@@ -10,8 +10,8 @@ public class ProgramStepPanel extends JPanel {
 	int textLineNumber;
 	JComboBox<String> stepType = new JComboBox<String>(new String[] { " ",
 			"Open Relays", "Close Relays", "Set Voltage", "Set Current",
-			"Wait", "Measure Voltage", "Measure Current", "Math",
-			"Datalog", "Turn Off Resources" });
+			"Wait", "Measure Voltage", "Measure Current", 
+			"Datalog", "Turn Off Resources" }); //"Math", (add that option back in if it gets used)
 
 	public ProgramStepPanel(int lineNumber) {
 		stepType.addActionListener(new stepTypeListener());

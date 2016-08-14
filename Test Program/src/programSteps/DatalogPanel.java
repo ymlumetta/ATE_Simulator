@@ -7,7 +7,6 @@ import java.util.Iterator;
 
 import javax.swing.AbstractButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import testProgram.Main;
 

@@ -14,6 +14,7 @@ public class MeasureVoltagePanel extends JPanel {
 
 	int textLineNumber;
 	ArrayList<Object> measureVoltageArray = new ArrayList<Object>();
+	String[] pinList = Main.getPinList();
 	
 	public MeasureVoltagePanel(int lineNumber) {
 		JTextField numberOfSamplesV = new JTextField();

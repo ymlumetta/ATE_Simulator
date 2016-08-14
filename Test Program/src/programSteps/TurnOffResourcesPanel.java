@@ -16,14 +16,14 @@ public class TurnOffResourcesPanel extends JPanel {
 	ArrayList<JCheckBox> turnOffResourcesArray = new ArrayList<JCheckBox>();
 	
 	public TurnOffResourcesPanel(int lineNumber) {
-		JCheckBox cS = new JCheckBox("Turn Off Resources");
+		JCheckBox cS = new JCheckBox("Current Sources");
 		this.add(cS);
 		turnOffResourcesArray.add(cS);
 		cS.addActionListener(new TurnOffResourcesListener());
-//		JCheckBox vS = new JCheckBox("Voltage Sources");
-//		this.add(vS);
-//		turnOffResourcesArray.add(vS);
-//		vS.addActionListener(new TurnOffResourcesListener());
+		JCheckBox vS = new JCheckBox("Voltage Sources");
+		this.add(vS);
+		turnOffResourcesArray.add(vS);
+		vS.addActionListener(new TurnOffResourcesListener());
 		textLineNumber = lineNumber;
 	}
 	
@@ -33,24 +33,24 @@ public class TurnOffResourcesPanel extends JPanel {
 		this.add(cS);
 		turnOffResourcesArray.add(cS);
 		cS.addActionListener(new TurnOffResourcesListener());
-//		JCheckBox vS = new JCheckBox("Voltage Sources");
-//		vS.setSelected(new Boolean(resources.get(1)));
-//		this.add(vS);
-//		turnOffResourcesArray.add(vS);
-//		vS.addActionListener(new TurnOffResourcesListener());
+		JCheckBox vS = new JCheckBox("Voltage Sources");
+		vS.setSelected(new Boolean(resources.get(1)));
+		this.add(vS);
+		turnOffResourcesArray.add(vS);
+		vS.addActionListener(new TurnOffResourcesListener());
 		textLineNumber = Main.programSteps.size();
 	}
 	
 	private class TurnOffResourcesListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			String turnOffResources = "Turn Off Resources";
+			String turnOffResources = "Turn Off";
 			Iterator<JCheckBox> tORAI = turnOffResourcesArray.iterator();
 			if (tORAI.next().isSelected()) {
-				turnOffResources = turnOffResources;// + " Current Sources ";
+				turnOffResources = turnOffResources + " Current Sources ";
 			}
-//			if (tORAI.next().isSelected()) {
-//				turnOffResources = turnOffResources + " Voltage Sources";
-//			}
+			if (tORAI.next().isSelected()) {
+				turnOffResources = turnOffResources + " Voltage Sources";
+			}
 			turnOffResources = turnOffResources + "\n";
 			if (Main.dataLines.size() < textLineNumber + 1) {
 				Main.dataLines.add(textLineNumber, turnOffResources);

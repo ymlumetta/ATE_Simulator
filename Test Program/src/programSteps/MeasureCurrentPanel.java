@@ -14,6 +14,7 @@ public class MeasureCurrentPanel extends JPanel {
 
 	int textLineNumber;
 	ArrayList<Object> measureCurrentArray = new ArrayList<Object>();
+	String[] pinList = Main.getPinList();
 	
 	public MeasureCurrentPanel(int lineNumber) {
 		JTextField numberOfSamplesC = new JTextField();
