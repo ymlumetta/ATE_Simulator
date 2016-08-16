@@ -84,10 +84,10 @@ public class Test {
 	
 	
 	
-	private void makeTable(){
-		Table table = new ContinuityTable();
+	public void makeTable(){
+		Table table = new Table();
 		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		table.setSize(600,200);
+		table.pack();
 		table.setVisible(true);
 	}
 	

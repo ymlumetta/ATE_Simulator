@@ -163,7 +163,8 @@ public class ContinuityTest extends Test {
 	public void makeTable(){
 		Table table = new ContinuityTable();
 		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		table.setSize(600,200);
+		table.pack();
+		table.setTitle("Continuity Test Results");
 		table.setVisible(true);
 	}
 }
