@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JFrame;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -27,8 +29,9 @@ public class Test {
 	
 	
 	public void run(){
-		parseSteps();
+//		parseSteps();
 //		findTables(url);
+		makeTable();
 	}
 	
 	
@@ -71,10 +74,21 @@ public class Test {
 	
 	
 	
-	public int getItemFromList(ArrayList<Integer> list){
+	@SuppressWarnings("unused")
+	private int getItemFromList(ArrayList<Integer> list){
 		int index = randomGenerator.nextInt(list.size());
         int item = list.get(index);
         return item;
+	}
+	
+	
+	
+	
+	private void makeTable(){
+		Table table = new ContinuityTable();
+		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		table.setSize(600,200);
+		table.setVisible(true);
 	}
 	
 }
