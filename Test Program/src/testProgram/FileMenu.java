@@ -185,12 +185,12 @@ public class FileMenu extends JMenu {
 								case "Measure Voltage":
 									step.setType("Measure Voltage");
 									lines.remove(0);
-									step.add(new MeasureVoltagePanel(lines));
+//									step.add(new MeasureVoltagePanel(lines));
 									break;
 								case "Measure Current":
 									step.setType("Measure Current");
 									lines.remove(0);
-									step.add(new MeasureCurrentPanel(lines));
+//									step.add(new MeasureCurrentPanel(lines));
 									break;
 								case "Math":
 									step.setType("Math");

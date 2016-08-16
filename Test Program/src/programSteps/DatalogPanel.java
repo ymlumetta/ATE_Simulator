@@ -67,7 +67,7 @@ public class DatalogPanel extends JPanel {
 			do{
 				Object next =  dAI.next();
 				if(((AbstractButton) next).isSelected()){
-					datalog = datalog +  " " + getTestPrefix() + ((Component) next).getName();
+					datalog = datalog +  " " + Main.getTestPrefix() + ((Component) next).getName();
 				}
 			}while(dAI.hasNext());
 			
@@ -112,14 +112,5 @@ public class DatalogPanel extends JPanel {
 //		}
 	}
 	
-	private static String getTestPrefix(){
-		if(Main.test == null)
-			return "";
-		switch(Main.test){
-		case "Continuity":
-			return "Cont";
-		default:
-			return "";
-		}
-	}
+	
 }

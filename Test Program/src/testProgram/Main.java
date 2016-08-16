@@ -94,5 +94,16 @@ public class Main {
 			return Main.allPins;
 		}
 	}
+	
+	public static String getTestPrefix(){
+		if(Main.test == null)
+			return "";
+		switch(Main.test){
+		case "Continuity":
+			return "Cont";
+		default:
+			return "";
+		}
+	}
 
 }
