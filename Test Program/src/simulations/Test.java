@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+//
+//import org.jsoup.Jsoup;
+//import org.jsoup.nodes.Document;
+//import org.jsoup.nodes.Element;
+//import org.jsoup.select.Elements;
 
 import testProgram.Main;
 
@@ -57,18 +57,18 @@ public class Test {
 	
 	
 	public void findTables(String url){
-        String html = url;
-        Document doc = null;
-        if(url == null) return;
-		try {
-			doc = Jsoup.connect(html).get();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-        Elements tableElements = doc.select("table");
-        Element firstTable = tableElements.get(0);
-        
-        System.out.println(firstTable);        
+//        String html = url;
+//        Document doc = null;
+//        if(url == null) return;
+//		try {
+//			doc = Jsoup.connect(html).get();
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//        Elements tableElements = doc.select("table");
+//        Element firstTable = tableElements.get(0);
+//        
+//        System.out.println(firstTable);        
     }
 	
 	
