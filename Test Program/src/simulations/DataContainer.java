@@ -19,4 +19,15 @@ public class DataContainer {
 		status = st;
 		pin = p;
 	}
+	
+	
+	public String toString(){
+		String string = "Pin: " + pin + "\n" + "Data: \n";
+		for(int i=0; i<measurements.size(); i++){
+			string = string + measurements.get(i) + ", " + status.get(i) + "\n";
+		}
+		
+		
+		return string;
+	}
 }

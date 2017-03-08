@@ -1,9 +1,7 @@
 package simulations;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,10 +17,13 @@ public class ContinuityTest extends Test {
 //	private static int longerWait = 5;
 //	private static int currentDirectionWrong = 4;
 	
+	protected ArrayList<DataContainer> data;
+	
 
 	
 	public ContinuityTest(){
 		testType = normalTest;
+		data = new ArrayList<DataContainer>();
 	}
 	
 	
@@ -30,7 +31,7 @@ public class ContinuityTest extends Test {
 	
 	
 	public void makeTable(){
-		Table table = new ContinuityTable();
+		Table table = new ContinuityTable(data);
 		table.toss();
 		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		table.pack();
@@ -48,12 +49,9 @@ public class ContinuityTest extends Test {
 		while(input.hasNextLine()){
 			String next = input.nextLine();
 			if(next.startsWith("<" + testType +">")){
-				split(next);
-//				System.out.println(next);
-			}
-				
+				data.add(split(next));
+			}				
 		}
-		System.out.println("FINISHED");
 	}
 	
 	
@@ -219,6 +217,8 @@ public class ContinuityTest extends Test {
 		
 		//grabbing the other two parts from part[1]
 		String[] data = part[1].split("&");
+		
+		//very messy, do not touch
 		for(String list : data){
 			list = list.replace("[","");
 			list = list.replace("]","");
@@ -227,8 +227,6 @@ public class ContinuityTest extends Test {
 			measurements.add(cleanData[0]);
 			status.add(cleanData[1]);
 		}
-		
-		System.out.println("");
 		return new DataContainer(measurements, status, pin);
 	}
 	
