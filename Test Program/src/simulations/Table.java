@@ -13,4 +13,8 @@ public class Table extends JFrame{
 		
 	}
 	
+	public void toss(){
+		
+	}
+	
 }

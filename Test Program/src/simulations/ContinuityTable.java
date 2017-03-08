@@ -20,8 +20,14 @@ public class ContinuityTable extends Table{
 			
 	public ContinuityTable(){
 		setLayout(new FlowLayout());
+		
+	}
+	
+	
+	
+	public void toss(){
 		table = new JTable(ContinuityData, columnNames);
-				
+		
 		JScrollPane pane = new JScrollPane(table);
 		add(pane);
 	}

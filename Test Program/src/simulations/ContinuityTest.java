@@ -1,16 +1,40 @@
 package simulations;
 
+import java.io.IOException;
+
 import javax.swing.JFrame;
 
 import testProgram.Main;
 
 public class ContinuityTest extends Test {
 	
-//	private int waitTime;
+	private static int normalTest = 0;
+//	private static int openSocket = 1;
+//	private static int noWait = 6;
+//	private static int longerWait = 5;
+//	private static int currentDirectionWrong = 4;
 	
 	public ContinuityTest(){
 		this.url = "http://granthudson.github.io/data/comparator/continuity.html";
 	}
+	
+	
+	
+	
+	
+	public void makeTable(){
+		Table table = new ContinuityTable();
+		table.toss();
+		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		table.pack();
+		table.setTitle("Continuity Test Results");
+		table.setVisible(true);
+	}
+	
+	
+	
+	
+	
 	
 	
 	
@@ -160,11 +184,5 @@ public class ContinuityTest extends Test {
 	
 	
 	
-	public void makeTable(){
-		Table table = new ContinuityTable();
-		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		table.pack();
-		table.setTitle("Continuity Test Results");
-		table.setVisible(true);
-	}
+	
 }

@@ -80,6 +80,7 @@ public class Main {
 		mainPane.add(programStepTabs, programStepTabsConstraints);
 
 		mainWindow.pack();
+		mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		mainWindow.setVisible(true);
 	}
 	
