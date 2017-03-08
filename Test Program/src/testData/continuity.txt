@@ -1,0 +1,14 @@
+#The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
+
+
+Continuity Correct:
+
+ContVinm: [-0.694, P], [-0.694, P]
+ContVout: [0.73, P], [0.73, P]
+ContVinp: [-0.694, P], [-0.694, P]
+ContVcc: [-0.535, P], [-0.535, P]
+ContVee: [0.535, P], [0.535, P]
+
+
+
+

@@ -1,5 +1,6 @@
 package simulations;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,10 +13,12 @@ import javax.swing.JFrame;
 import testProgram.Main;
 
 public class Test {
-	String url;
+	
+	protected int testType;
 	ArrayList<String> param = Main.dataLines;
 	Error stepOrderError = new Error("Incorrect Step Order");
 	Error tooManyStepsError = new Error("Too Many Steps!");
+	Error fileNotFound = new Error("File not found!");
 	
 	private Random randomGenerator;	
 	
@@ -28,7 +31,11 @@ public class Test {
 	
 	public void run(){
 //		parseSteps();
-//		findTables(url);
+		try {
+			findData();
+		} catch (FileNotFoundException e) {
+			fileNotFound.toss();
+		}
 		makeTable();
 	}
 	
@@ -54,7 +61,8 @@ public class Test {
 	
 	
 	
-	public void findTables(String url){
+	public void findData() throws FileNotFoundException{
+		
      
     }
 	

@@ -1,6 +1,10 @@
 package simulations;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.JFrame;
 
@@ -15,7 +19,7 @@ public class ContinuityTest extends Test {
 //	private static int currentDirectionWrong = 4;
 	
 	public ContinuityTest(){
-		this.url = "http://granthudson.github.io/data/comparator/continuity.html";
+		testType = normalTest;
 	}
 	
 	
@@ -33,13 +37,17 @@ public class ContinuityTest extends Test {
 	
 	
 	
-	
+	public void findData() throws FileNotFoundException{
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(new FileReader("src/testData/continuity.txt"));
+		System.out.println(input.nextLine());
+	}
 	
 	
 	
 	
 	public void parseSteps(){
-		
+		testType = normalTest;
 		int i = 0;
 		
 		if(param.isEmpty()){
