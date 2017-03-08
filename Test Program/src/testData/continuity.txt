@@ -1,14 +1,24 @@
 #The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
 
+FORMAT IS IMPORTANT!  
+<number> Pin:[measurement, P/F], [ ...
 
-Continuity Correct:
+<number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
+Pin is the pin that is being tested.
+measuerment is the measurement taken at the pin.
+P/F is P for pass, F for fail.  Please only include one.
 
-ContVinm: [-0.694, P], [-0.694, P]
-ContVout: [0.73, P], [0.73, P]
-ContVinp: [-0.694, P], [-0.694, P]
-ContVcc: [-0.535, P], [-0.535, P]
-ContVee: [0.535, P], [0.535, P]
-
-
+Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.
+Please use the spacing shown (aka none).  While not critical, your table will look rather odd if you don't.
 
 
+
+
+Continuity Correct (marked by <0>):
+
+<0> ContVinm:[-0.694,P]&[-0.694,P]
+<0> ContVout:[0.73,P]&[0.73,P]
+<0> ContVinp:[-0.694,P]&[-0.694,P]
+<0> ContVcc:[-0.535,P]&[-0.535,P]
+<0> ContVee:[0.535,P]&[0.535,P]
+<end>

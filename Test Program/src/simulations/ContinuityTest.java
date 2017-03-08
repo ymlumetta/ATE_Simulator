@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -17,6 +18,8 @@ public class ContinuityTest extends Test {
 //	private static int noWait = 6;
 //	private static int longerWait = 5;
 //	private static int currentDirectionWrong = 4;
+	
+
 	
 	public ContinuityTest(){
 		testType = normalTest;
@@ -40,14 +43,23 @@ public class ContinuityTest extends Test {
 	public void findData() throws FileNotFoundException{
 		@SuppressWarnings("resource")
 		Scanner input = new Scanner(new FileReader("src/testData/continuity.txt"));
-		System.out.println(input.nextLine());
+		
+		
+		while(input.hasNextLine()){
+			String next = input.nextLine();
+			if(next.startsWith("<" + testType +">")){
+				split(next);
+//				System.out.println(next);
+			}
+				
+		}
+		System.out.println("FINISHED");
 	}
 	
 	
 	
 	
 	public void parseSteps(){
-		testType = normalTest;
 		int i = 0;
 		
 		if(param.isEmpty()){
@@ -188,6 +200,37 @@ public class ContinuityTest extends Test {
 		pass.toss();
 	}
 	
+	
+	//don't look too closely at this.  If you follow the format in the text files, this will split the data 
+	//into the pin, the test measurements, and the pass/fail status.
+	//I have not left room for user error, so please follow the format in the text files.
+	
+	private DataContainer split(String input){
+		
+		input = input.trim();
+		ArrayList<String> status = new ArrayList<String>();
+		ArrayList<String> measurements = new ArrayList<String>();
+		String pin = "---";
+		
+		String[] part = input.split(":");
+		
+		//Grabbing the pin
+		pin = part[0].split(" ")[1];
+		
+		//grabbing the other two parts from part[1]
+		String[] data = part[1].split("&");
+		for(String list : data){
+			list = list.replace("[","");
+			list = list.replace("]","");
+			list = list.trim();
+			String[] cleanData = list.split(",");
+			measurements.add(cleanData[0]);
+			status.add(cleanData[1]);
+		}
+		
+		System.out.println("");
+		return new DataContainer(measurements, status, pin);
+	}
 	
 	
 	
