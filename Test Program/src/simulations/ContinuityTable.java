@@ -2,6 +2,7 @@ package simulations;
 
 import java.awt.FlowLayout;
 import java.util.ArrayList;
+import java.util.Random;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -25,7 +26,9 @@ public class ContinuityTable extends Table{
 	
 	
 	public void toss(){
-		int i = 1;
+		Random random = new Random();
+		int i = random.nextInt(data.get(0).measurements.size());
+		System.out.println(i);
 		
 		String vinmData = data.get(0).measurements.get(i);
 		String vinmStat = data.get(0).status.get(i);
