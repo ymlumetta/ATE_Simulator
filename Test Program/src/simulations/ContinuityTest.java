@@ -17,7 +17,7 @@ public class ContinuityTest extends Test {
 //	private static int longerWait = 5;
 //	private static int currentDirectionWrong = 4;
 	
-	protected ArrayList<DataContainer> data;
+	
 	
 
 	
@@ -33,6 +33,7 @@ public class ContinuityTest extends Test {
 	public void makeTable(){
 		Table table = new ContinuityTable(data);
 		table.toss();
+		table.setLocationRelativeTo(null);
 		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		table.pack();
 		table.setTitle("Continuity Test Results");
@@ -199,36 +200,6 @@ public class ContinuityTest extends Test {
 	}
 	
 	
-	//don't look too closely at this.  If you follow the format in the text files, this will split the data 
-	//into the pin, the test measurements, and the pass/fail status.
-	//I have not left room for user error, so please follow the format in the text files.
-	
-	private DataContainer split(String input){
-		
-		input = input.trim();
-		ArrayList<String> status = new ArrayList<String>();
-		ArrayList<String> measurements = new ArrayList<String>();
-		String pin = "---";
-		
-		String[] part = input.split(":");
-		
-		//Grabbing the pin
-		pin = part[0].split(" ")[1];
-		
-		//grabbing the other two parts from part[1]
-		String[] data = part[1].split("&");
-		
-		//very messy, do not touch
-		for(String list : data){
-			list = list.replace("[","");
-			list = list.replace("]","");
-			list = list.trim();
-			String[] cleanData = list.split(",");
-			measurements.add(cleanData[0]);
-			status.add(cleanData[1]);
-		}
-		return new DataContainer(measurements, status, pin);
-	}
 	
 	
 	

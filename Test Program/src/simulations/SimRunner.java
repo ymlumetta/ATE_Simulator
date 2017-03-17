@@ -15,7 +15,7 @@ public class SimRunner {
 			Test continuity = new ContinuityTest();
 			continuity.run();
 			break;
-		case "Offset":
+		case "Offset/Hysteresis":
 			Test offset = new OffsetTest();
 			offset.run();
 			break;

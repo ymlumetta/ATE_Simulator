@@ -27,9 +27,9 @@ public class MainMenu extends JMenuBar {
 		lm741.setName("LM741");
 		analogPartMenu.add(lm741);
 
-		JMenu op07d = new JMenu("OP07D (Op Amp)");
-		op07d.setName("OP07D");
-		analogPartMenu.add(op07d);
+//		JMenu op07d = new JMenu("OP07D (Op Amp)");
+//		op07d.setName("OP07D");
+//		analogPartMenu.add(op07d);
 
 		JMenu mixedSignalPartMenu = new JMenu("Mixed Signal");
 		testMenu.add(mixedSignalPartMenu);
@@ -46,14 +46,17 @@ public class MainMenu extends JMenuBar {
 		
 		
 		
-
 		JMenuItem continuity = new JMenuItem("Continuity");
 		continuity.addActionListener(new TestMenuListener());
-		lm741.add(continuity);
+		mcp6541.add(continuity);
+
+//		JMenuItem continuity3 = new JMenuItem("Continuity");
+//		continuity3.addActionListener(new TestMenuListener());
+//		lm741.add(continuity3);
 		
-		JMenuItem continuity2 = new JMenuItem("Continuity");
-		continuity2.addActionListener(new TestMenuListener());
-		op07d.add(continuity2);
+//		JMenuItem continuity2 = new JMenuItem("Continuity");
+//		continuity2.addActionListener(new TestMenuListener());
+//		op07d.add(continuity2);
 
 //		JMenuItem analogOffset = new JMenuItem("Offset");
 //		analogOffset.addActionListener(new TestMenuListener());
@@ -77,9 +80,9 @@ public class MainMenu extends JMenuBar {
 		analogTHD.addActionListener(new TestMenuListener());
 		lm741.add(analogTHD);
 		
-		JMenuItem analogTHD2 = new JMenuItem("Total Harmonic Distortion");
-		analogTHD2.addActionListener(new TestMenuListener());
-		op07d.add(analogTHD2);
+//		JMenuItem analogTHD2 = new JMenuItem("Total Harmonic Distortion");
+//		analogTHD2.addActionListener(new TestMenuListener());
+//		op07d.add(analogTHD2);
 
 		JMenuItem offsetHysteresis = new JMenuItem("Offset/Hysteresis");
 		offsetHysteresis.addActionListener(new TestMenuListener());

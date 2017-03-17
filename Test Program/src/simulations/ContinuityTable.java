@@ -61,7 +61,4 @@ public class ContinuityTable extends Table{
 		add(pane);
 	}
 			
-	public void setMeasurement(){
-		
-	}
 }
