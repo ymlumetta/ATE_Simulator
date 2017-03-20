@@ -1,0 +1,21 @@
+#The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
+
+FORMAT IS IMPORTANT!  
+<number> Pin:[measurement, P/F], [ ...
+
+<number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
+Pin is the pin that is being tested.
+measurement is the measurement taken at the pin.
+P/F is P for pass, F for fail.  Please only include one.
+
+Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.
+Please use the spacing shown (none).  While not critical, your table will look rather odd if you don't.
+
+
+(Gain Error Correct contains ridiculous amounts of data, so I entered about half of it, choosing the most varied sets)
+
+Gain Error Correct (marked by <0>):
+
+<0> VSE:[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.001,P]&[0.004,P]&[0.004,P]&[0.003,P]&[0.003,P]&[0.004,P]&[0.003,P]&[0.003,P]&[0.003,P]&[0.003,P]&[0.003,P]&[0.07,P]&[0.006,P]&[0,P]
+<0> GE:[0.006,P]&[0.001,P]&[-0.003,P]&[-0.008,P]&[-0.009,P]&[-0.006,P]&[0.001,P]&[0.009,P]&[0.006,P]&[0.004,P]&[-0.082,P]&[-0.082,P]&[-0.076,P]&[-0.077,P]&[-0.087,P]&[-0.079,P]&[-0.072,P]&[-0.079,P]&[-0.079,P]&[-0.082,P]&[-0.023,P]&[-0.018,P]&[0.014,P]
+<end>

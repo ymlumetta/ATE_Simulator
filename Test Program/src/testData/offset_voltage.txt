@@ -1,0 +1,22 @@
+#The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
+
+FORMAT IS IMPORTANT!  
+<number> Pin:[measurement, P/F], [ ...
+
+<number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
+Pin is the pin that is being tested.
+measuerment is the measurement taken at the pin.
+P/F is P for pass, F for fail.  Please only include one.
+
+Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.
+Please use the spacing shown (none).  While not critical, your table will look rather odd if you don't.
+
+
+
+Offset Voltage and Hysteresis
+
+Everything Correct:
+<0> Vos:[0.75,P]&[0.5,P]&[0.5,P]&[0.5,P]&[0.75,P]&[-1,P]&[-1,P]&[-1,P]&[-1,P]&[-1,P]&[2.25,P]&[2.25,P]&[2.25,P]&[2.25,P]&[2.25,P]&[0.5,P]&[0.5,P]&[0.5,P]&[0.5,P]&[0.5,P]&[-0.75,P]&[-0.75,P]&[-0.75,P]&[-0.75,P]&[-0.75,P]&[0,P]&[0,P]&[0,P]&[0,P]&[0,P]&[-0.25,P]&[-0.25,P]&[-0.25,P]&[-0.25,P]&[-0.25,P]&[2.75,P]&[2.75,P]&[2.75,P]&[2.75,P]&[2.75,P]&[1.5,P]&[1.5,P]&[1.5,P]&[1.5,P]&[1.5,P]&[0.25,P]&[0.25,P]&[0.25,P]&[0.25,P]&[0.25,P]
+<0> Vhyst:[3.5,P]&[3,P]&[3,P]&[3,P]&[3.5,P]&[3,P]&[4,P]&[3,P]&[3,P]&[3,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[4,P]&[4,P]&[4,P]&[4,P]&[4,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3,P]&[3,P]&[3,P]&[3,P]&[3,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[4,P]&[4,P]&[4,P]&[4,P]&[4,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]&[3.5,P]
+<end>
+

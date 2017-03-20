@@ -1,0 +1,20 @@
+#The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
+
+FORMAT IS IMPORTANT!  
+<number> Pin:[measurement, P/F], [ ...
+
+<number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
+Pin is the pin that is being tested.
+measurement is the measurement taken at the pin.
+P/F is P for pass, F for fail.  Please only include one.
+
+Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.
+Please use the spacing shown (none).  While not critical, your table will look rather odd if you don't.
+
+
+(THD Correct contains ridiculous amounts of data, so I entered a set from each chip/site)
+
+Total Harmonic Distortion Correct (marked by <0>):
+
+<0> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<end>
