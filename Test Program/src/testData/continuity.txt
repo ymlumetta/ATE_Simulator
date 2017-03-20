@@ -5,7 +5,7 @@ FORMAT IS IMPORTANT!
 
 <number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
 Pin is the pin that is being tested.
-measuerment is the measurement taken at the pin.
+measurement is the measurement taken at the pin.
 P/F is P for pass, F for fail.  Please only include one.
 
 Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.

@@ -24,7 +24,7 @@ public class THDTest extends Test{
 		table.setLocationRelativeTo(null);
 		table.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		table.pack();
-		table.setTitle("Continuity Test Results");
+		table.setTitle("Total Harmonic Distortion Test Results");
 		table.setVisible(true);
 	}
 	
