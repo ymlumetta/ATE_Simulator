@@ -12,7 +12,13 @@ Each new test is to be stored in line with the pin.  Add new data using the "&" 
 Please use the spacing shown (none).  While not critical, your table will look rather odd if you don't.
 
 
-(THD Correct contains ridiculous amounts of data, so I entered a set from each chip/site)
+
+<#>  refers to a set of data for a test
+
+<#> <#>  The second number refers to a specific chip for a test
+
+I only put in site 1, site 2 is not included. 
+
 
 Total Harmonic Distortion Correct (marked by <0>):
 

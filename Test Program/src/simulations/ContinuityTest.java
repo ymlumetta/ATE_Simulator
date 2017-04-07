@@ -58,145 +58,148 @@ public class ContinuityTest extends Test {
 	
 	
 	
-	public void parseSteps(){
+	public boolean parseSteps(){
+		
 		int i = 0;
 		
 		if(param.isEmpty()){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		if(!Main.programSteps.get(i).getName().equals("Close Relays")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!Main.programSteps.get(i).getName().equals("Wait")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Wait")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Measure Voltage")){//measure voltage source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Datalog")){//datalog
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Wait")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Measure Voltage")){//measure voltage source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Datalog")){//datalog
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;		
 		if(!(Main.programSteps.get(i).getName().equals("Set Current") || Main.programSteps.get(i).getName().equals("Set Voltage"))){//set current source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Wait")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Measure Voltage")){//measure voltage source
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Datalog")){//datalog
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;
 		if(!Main.programSteps.get(i).getName().equals("Turn Off Resources")){//turn off equipment
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;
 		
 		if(!Main.programSteps.get(i).getName().equals("Open Relays")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		i++;
 		if(!(i==Main.programSteps.size())){
 			tooManyStepsError.toss();
-			return;
+			return false;
 		}
 		
 		System.out.println("pass");
-		Error pass = new Error("Continuity test steps are correct!");
-		pass.toss();
+//		Error pass = new Error("Continuity test steps are correct!");
+//		pass.toss();
+		
+		return true;
 	}
 	
 	

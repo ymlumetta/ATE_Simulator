@@ -43,18 +43,18 @@ public class GainErrorTest extends Test{
 	
 	
 	
-	public void parseSteps(){
+	public boolean parseSteps(){
 		
 		int i = 0;
 		
 		if(param.isEmpty()){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		if(i>param.size() || !param.get(i).toString().equals("Close Relays\n")){
 			stepOrderError.toss();
-			return;
+			return false;
 		}	
 		
 		
@@ -63,9 +63,10 @@ public class GainErrorTest extends Test{
 		i++;
 		if(i>param.size() || (!param.get(i).toString().equals("Open Relays\n"))){
 			stepOrderError.toss();
-			return;
+			return false;
 		}
 		
 		System.out.println("pass");
+		return true;
 	}
 }

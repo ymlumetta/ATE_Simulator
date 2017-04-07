@@ -45,8 +45,8 @@ public class Test {
 	
 	
 	
-	public void parseSteps(){
-		
+	public boolean parseSteps(){
+		return true;
 	}
 	
 	
