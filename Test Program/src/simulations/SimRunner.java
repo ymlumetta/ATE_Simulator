@@ -3,6 +3,8 @@ package simulations;
 
 public class SimRunner {
 	
+	Error noTestError = new Error("Please select a test!");
+	
 	public SimRunner(){
 		
 	}
@@ -32,10 +34,11 @@ public class SimRunner {
 			thd.run();
 			break;
 		case "":
-			System.out.println("no test specified");
+			
+			noTestError.toss();
 			break;
 		default:
-			System.out.println("input is not implemented yet");
+			noTestError.toss();
 			break;
 		}
 		
