@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import testProgram.Main;
+
 @SuppressWarnings("serial")
 public class Table extends JFrame{
 	
@@ -16,12 +18,8 @@ public class Table extends JFrame{
 	String[] columnNames = {"Test Name", "P/F", "Upper Limits", "Lower Limits", "Measurement", "Unit"};
 	
 	public Table(){
-		
 		runAgain.addActionListener(new RunAgainListener());
 		newChip.addActionListener(new NewChipListener());
-		
-		this.add(newChip);
-		this.add(runAgain);
 	}
 	
 	public void toss(){
@@ -33,7 +31,8 @@ public class Table extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			
+			SimRunner runner = new SimRunner();
+			runner.runSim(Main.test, Main.part);
 		}
 		
 	}
@@ -42,10 +41,9 @@ public class Table extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			
 		}
 		
 	}
 	
+		
 }

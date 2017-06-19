@@ -1,11 +1,14 @@
 package simulations;
 
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
 
 @SuppressWarnings("serial")
 public class OffsetTable extends Table{
@@ -15,11 +18,21 @@ public class OffsetTable extends Table{
 	
 	public OffsetTable(){
 		setLayout(new FlowLayout());
+		runAgain.addActionListener(new RunAgainListener());
+		newChip.addActionListener(new NewChipListener());
+		
+		this.add(newChip);
+		this.add(runAgain);
 	}
 	
 	public OffsetTable(ArrayList<DataContainer> d){
 		setLayout(new FlowLayout());
 		data = d;
+		runAgain.addActionListener(new RunAgainListener());
+		newChip.addActionListener(new NewChipListener());
+		
+		this.add(newChip);
+		this.add(runAgain);
 	}
 	
 	
@@ -48,6 +61,24 @@ public class OffsetTable extends Table{
 		
 		JScrollPane pane = new JScrollPane(table);
 		add(pane);
+	}
+	private class RunAgainListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+		
+	}
+	
+	private class NewChipListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 
 }

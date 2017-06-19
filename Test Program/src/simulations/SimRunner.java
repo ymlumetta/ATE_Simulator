@@ -1,9 +1,13 @@
 package simulations;
 
 
+
+// This is called by MainMenu in the action listeners to run the simulation.
+
 public class SimRunner {
 	
 	Error noTestError = new Error("Please select a test!");
+	Error weirdStuffHappened = new Error("I broke; sorry!");
 	
 	public SimRunner(){
 		
@@ -34,11 +38,10 @@ public class SimRunner {
 			thd.run();
 			break;
 		case "":
-			
 			noTestError.toss();
 			break;
 		default:
-			noTestError.toss();
+			weirdStuffHappened.toss();
 			break;
 		}
 		

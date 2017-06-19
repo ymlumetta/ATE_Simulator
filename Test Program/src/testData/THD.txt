@@ -1,9 +1,10 @@
 #The add format is:  [Measurement, P or F].  All other test data should be the same, including incorrectly done tests.
 
 FORMAT IS IMPORTANT!  
-<number> Pin:[measurement, P/F], [ ...
+<number><number2> Pin:[measurement, P/F], [ ...
 
 <number> dictates the test type (correct, or various forms of incorrect).  The numbers are arbitrary but very important.  Do not touch them.
+The <number2> after the first dictates the chip number.  The numbers are not arbitrary, so don't touch these either, please.
 Pin is the pin that is being tested.
 measurement is the measurement taken at the pin.
 P/F is P for pass, F for fail.  Please only include one.
@@ -22,5 +23,9 @@ I only put in site 1, site 2 is not included.
 
 Total Harmonic Distortion Correct (marked by <0>):
 
-<0> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<0><1> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<0><2> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<0><3> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<0><4> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
+<0><5> THD:[-35.991,P]&[-36.195,P]&[-36.103,P]&[-36.187,P]&[-35.57,P]&[-35.559,P]&[-35.49,P]&[-35.504,P]&[-35.91,P]&[-35.893,P]
 <end>
