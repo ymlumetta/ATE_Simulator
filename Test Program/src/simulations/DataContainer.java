@@ -2,6 +2,13 @@ package simulations;
 
 import java.util.ArrayList;
 
+
+/**
+ * Class meant to hold data pulled by the "split" function.  It holds the pin being tested, the numeric values, and 
+ * whether or not those values passed the given test.
+ * @author lumettym
+ *
+ */
 public class DataContainer {
 	public ArrayList<String> measurements;
 	public ArrayList<String> status;

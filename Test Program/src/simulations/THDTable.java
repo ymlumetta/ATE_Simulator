@@ -22,6 +22,7 @@ public class THDTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(chipNumber);
 	}
 	
 	public THDTable(ArrayList<DataContainer> d){
@@ -31,13 +32,13 @@ public class THDTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(chipNumber);
 	}
 	
 	
 	public void toss(){
 		Random random = new Random();
 		int i = random.nextInt(data.get(0).measurements.size());
-//		System.out.println(i);
 		
 		String Data = data.get(0).measurements.get(i);
 		String Stat = data.get(0).status.get(i);

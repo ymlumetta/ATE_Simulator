@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 //import org.jsoup.nodes.Document;
 //import org.jsoup.nodes.Element;
@@ -95,7 +96,7 @@ public class Test {
 		//into the pin, the test measurements, and the pass/fail status.
 		//I have not left room for user error, so please follow the format in the text files.
 		
-		protected DataContainer split(String input){
+		protected DataContainer split(String input){			
 			
 			input = input.trim();
 			ArrayList<String> status = new ArrayList<String>();
@@ -110,7 +111,7 @@ public class Test {
 			//grabbing the other two parts from part[1]
 			String[] data = part[1].split("&");
 			
-			//very messy, do not touch
+			//messy, don't touch
 			for(String list : data){
 				list = list.replace("[","");
 				list = list.replace("]","");

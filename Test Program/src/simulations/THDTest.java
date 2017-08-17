@@ -10,6 +10,8 @@ import javax.swing.JFrame;
 public class THDTest extends Test{
 	
 	private static int normalTest = 0;
+	
+	private static int chipNumber = 2;
 
 	
 	public THDTest(){
@@ -37,7 +39,7 @@ public class THDTest extends Test{
 		
 		while(input.hasNextLine()){
 			String next = input.nextLine();
-			if(next.startsWith("<" + testType +">")){
+			if(next.startsWith("<" + testType +"><"+chipNumber+">")){
 				data.add(split(next));
 			}				
 		}
