@@ -2,10 +2,6 @@ package simulations;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-
 import javax.swing.*;
 
 //import programSteps.SetVoltagePanel.setVoltageListener;
@@ -24,21 +20,20 @@ public class Table extends JFrame{
 	JButton runAgain = new JButton("Run Again");
 	JComboBox<String> newChip = new JComboBox<String>(chipset);
 	
-	static String currentChip = "(Currently Using Chip 1)";
 	
-	public static JLabel chipNumber = new JLabel(currentChip);
+//	public static JLabel chipNumber = new JLabel(Main.chipInUse);
 	
 	JTable table;
 	Object[][] data = {{"","","","","",""}};
 	String[] columnNames = {"Test Name", "P/F", "Upper Limits", "Lower Limits", "Measurement", "Unit"};
 	
+	@SuppressWarnings("unused")
 	public Table(){
 		
 		JComboBox<String> newChip = new JComboBox<String>(chipset);
 		
 		
 		runAgain.addActionListener(new RunAgainListener());
-		newChip.addActionListener(new NewChipListener());
 		
 	}
 	
@@ -50,22 +45,18 @@ public class Table extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			SimRunner runner = new SimRunner();
-			runner.runSim(Main.test, Main.part);
-		}
-		
-	}
-	
-	private class NewChipListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
+			
 			String chipInUse = "Currently using: ";
 			
 			chipInUse = chipInUse + newChip.getSelectedItem();
-			System.out.println(chipInUse);
 			
-
+			Main.chipInUse = chipInUse;
+			System.out.println(Main.chipInUse);
+			
+			SimRunner runner = new SimRunner();
+			runner.runSim(Main.test, Main.part);
+			
+			
 		}
 		
 	}

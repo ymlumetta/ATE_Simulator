@@ -22,6 +22,8 @@ public class Main {
 	public static String test;
 	public static String part;
 	
+	public static String chipInUse = "Currently Using: Chip 5";
+	
 	public static void main(String[] args) {
 		
 		

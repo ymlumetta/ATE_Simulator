@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import testProgram.Main;
 
 
 @SuppressWarnings("serial")
@@ -22,7 +25,7 @@ public class THDTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
-		this.add(chipNumber);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	public THDTable(ArrayList<DataContainer> d){
@@ -32,7 +35,7 @@ public class THDTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
-		this.add(chipNumber);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	
