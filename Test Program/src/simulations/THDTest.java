@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import testProgram.Main;
+
 public class THDTest extends Test{
 	
 	private static int normalTest = 0;
-	
-	private static int chipNumber = 2;
 
 	
 	public THDTest(){
@@ -39,7 +39,7 @@ public class THDTest extends Test{
 		
 		while(input.hasNextLine()){
 			String next = input.nextLine();
-			if(next.startsWith("<" + testType +"><"+chipNumber+">")){
+			if(next.startsWith("<" + testType +"><"+Main.chipInUse.split("Chip ")[1]+">")){
 				data.add(split(next));
 			}				
 		}

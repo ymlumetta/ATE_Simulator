@@ -94,7 +94,7 @@ public class Test {
 	
 	//don't look too closely at this.  If you follow the format in the text files, this will split the data 
 		//into the pin, the test measurements, and the pass/fail status.
-		//I have not left room for user error, so please follow the format in the text files.
+		//I have not left much room for user error, so please follow the format in the text files.
 		
 		protected DataContainer split(String input){			
 			
