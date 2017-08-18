@@ -49,7 +49,7 @@ public class ContinuityTest extends Test {
 		
 		while(input.hasNextLine()){
 			String next = input.nextLine();
-			if(next.startsWith("<" + testType +">")){
+			if(next.startsWith("<" + testType +"><"+Main.chipInUse.split("Chip ")[1]+">")){
 				data.add(split(next));
 			}				
 		}

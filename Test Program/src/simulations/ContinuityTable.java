@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import testProgram.Main;
 
 @SuppressWarnings("serial")
 public class ContinuityTable extends Table{
@@ -19,21 +22,19 @@ public class ContinuityTable extends Table{
 	
 	public ContinuityTable(){
 		setLayout(new FlowLayout());
-		runAgain.addActionListener(new RunAgainListener());
-		newChip.addActionListener(new NewChipListener());
 		
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	public ContinuityTable(ArrayList<DataContainer> d){
 		setLayout(new FlowLayout());
 		data = d;
-		runAgain.addActionListener(new RunAgainListener());
-		newChip.addActionListener(new NewChipListener());
-		
+	
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	

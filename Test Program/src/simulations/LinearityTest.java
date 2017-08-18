@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import javax.swing.JFrame;
 
+import testProgram.Main;
+
 public class LinearityTest extends Test{
 	private static int normalTest = 0;
 	
@@ -35,7 +37,7 @@ public class LinearityTest extends Test{
 		
 		while(input.hasNextLine()){
 			String next = input.nextLine();
-			if(next.startsWith("<" + testType +">")){
+			if(next.startsWith("<" + testType +"><"+Main.chipInUse.split("Chip ")[1]+">")){
 				data.add(split(next));
 			}				
 		}
