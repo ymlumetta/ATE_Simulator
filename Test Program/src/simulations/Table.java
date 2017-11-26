@@ -48,7 +48,15 @@ public class Table extends JFrame{
 			
 			String chipInUse = "Currently using: ";
 			
-			chipInUse = chipInUse + newChip.getSelectedItem();
+			Object chip = newChip.getSelectedItem();
+			
+			//In a Continuity test gone right, there is only one chip to choose from - Chip 1.
+			if (Main.test.equals("Continuity")){
+				chip = "Chip 1";}
+			
+			chipInUse = chipInUse + chip;
+			
+		
 			
 			Main.chipInUse = chipInUse;
 			System.out.println(Main.chipInUse);

@@ -11,16 +11,19 @@ P/F is P for pass, F for fail.  Please only include one.
 Each new test is to be stored in line with the pin.  Add new data using the "&" character, followed by the new data in brackets.
 Please use the spacing shown (none).  While not critical, your table will look rather odd if you don't.
 
+<#>  refers to a set of data for a test
+
+<#> <#>  The second number refers to a specific chip for a test
 
 
 
 Continuity Correct (marked by <0>):
 
-<0> ContVinm:[-0.694,P]&[-0.694,P]
-<0> ContVout:[0.73,P]&[0.73,P]
-<0> ContVinp:[-0.694,P]&[-0.694,P]
-<0> ContVcc:[-0.535,P]&[-0.535,P]
-<0> ContVee:[0.535,P]&[0.535,P]
+<0><1> ContVinm:[-0.694,P]&[-0.694,P]
+<0><1> ContVout:[0.73,P]&[0.73,P]
+<0><1> ContVinp:[-0.694,P]&[-0.694,P]
+<0><1> ContVcc:[-0.535,P]&[-0.536,P]
+<0><1> ContVee:[0.535,P]&[0.535,P]
 <end>
 
 
