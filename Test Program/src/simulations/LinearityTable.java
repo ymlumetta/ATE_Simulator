@@ -43,7 +43,7 @@ public class LinearityTable extends Table{
 	public void toss(){
 		Random random = new Random();
 		int i = random.nextInt(data.get(0).measurements.size());
-		System.out.println(i);
+		//System.out.println(i);
 		
 		String dnlData = data.get(0).measurements.get(i);
 		String dnlStat = data.get(0).status.get(i);

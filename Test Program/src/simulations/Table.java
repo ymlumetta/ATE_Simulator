@@ -59,7 +59,7 @@ public class Table extends JFrame{
 		
 			
 			Main.chipInUse = chipInUse;
-			System.out.println(Main.chipInUse);
+			//System.out.println(Main.chipInUse);
 			
 			SimRunner runner = new SimRunner();
 			runner.runSim(Main.test, Main.part);

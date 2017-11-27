@@ -46,7 +46,7 @@ public class GainErrorTable extends Table{
 	public void toss(){
 		Random random = new Random();
 		int i = random.nextInt(data.get(0).measurements.size());
-		System.out.println(i);
+		//System.out.println(i);
 		
 		String zseData = data.get(0).measurements.get(i);
 		String zseStat = data.get(0).status.get(i);

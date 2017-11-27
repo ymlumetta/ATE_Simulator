@@ -43,7 +43,7 @@ public class ContinuityTable extends Table{
 		remove(pane);
 		Random random = new Random();
 		int i = random.nextInt(data.get(0).measurements.size());
-		System.out.println(i);
+		//System.out.println(i);
 		
 		String vinmData = data.get(0).measurements.get(i);
 		String vinmStat = data.get(0).status.get(i);
