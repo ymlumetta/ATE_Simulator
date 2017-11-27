@@ -6,8 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+
+import testProgram.Main;
 
 
 @SuppressWarnings("serial")
@@ -24,6 +27,7 @@ public class GainErrorTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	public GainErrorTable(ArrayList<DataContainer> d){
@@ -34,6 +38,7 @@ public class GainErrorTable extends Table{
 		
 		this.add(newChip);
 		this.add(runAgain);
+		this.add(new JLabel(Main.chipInUse));
 	}
 	
 	
