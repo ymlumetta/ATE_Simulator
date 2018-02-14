@@ -33,20 +33,11 @@ Total Harmonic Distortion Correct (marked by <0>):
 1 MCU Loop
 
 <1><1> THD:
-<1><2> THD:
-<1><3> THD:
-<1><4> THD:
-<1><5> THD:
-
 
 
 6 MCU Loops
 
 <2><1> THD:
-<2><2> THD:
-<2><3> THD:
-<2><4> THD:
-<2><5> THD:
 
 
 <end>

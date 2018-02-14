@@ -29,69 +29,69 @@ Continuity Correct (marked by <0>):
 
 Open Socket
 
-<1> ContVinm:[-10.234,F]&[-10.234,F]
-<1> ContVout:[10.225,F]&[10.225,F]
-<1> ContVinp:[-10.239,F]&[-10.239,F]
-<1> ContVcc:[-10.233,F]&[-10.233,F]
-<1> ContVee:[10.23,F]&[10.23,F]
+<1><1> ContVinm:[-10.234,F]&[-10.234,F]
+<1><1> ContVout:[10.225,F]&[10.225,F]
+<1><1> ContVinp:[-10.239,F]&[-10.239,F]
+<1><1> ContVcc:[-10.233,F]&[-10.233,F]
+<1><1> ContVee:[10.23,F]&[10.23,F]
 <end>
 
 
 Open Socket No Wait
 
-<2> ContVinm:[-10.234,F]&[-10.234,F]
-<2> ContVout:[10.225,F]&[10.225,F]
-<2> ContVinp:[-10.239,F]&[-10.239,F]
-<2> ContVcc:[-10.233,F]&[-10.233,F]
-<2> ContVee:[10.23,F]&[10.23,F]
+<2><1> ContVinm:[-10.234,F]&[-10.234,F]
+<2><1> ContVout:[10.225,F]&[10.225,F]
+<2><1> ContVinp:[-10.239,F]&[-10.239,F]
+<2><1> ContVcc:[-10.233,F]&[-10.233,F]
+<2><1> ContVee:[10.23,F]&[10.23,F]
 <end>
 
 
 Chip Flipped
 
-<3> ContVinm:[-10.234,F]&[-10.234,F]
-<3> ContVout:[5.392,F]&[5.389,F]
-<3> ContVinp:[-10.239,F]&[-10.239,F]
-<3> ContVcc:[-10.233,F]&[-10.233,F]
-<3> ContVee:[10.23,F]&[10.23,F]
+<3><1> ContVinm:[-10.234,F]&[-10.234,F]
+<3><1> ContVout:[5.392,F]&[5.389,F]
+<3><1> ContVinp:[-10.239,F]&[-10.239,F]
+<3><1> ContVcc:[-10.233,F]&[-10.233,F]
+<3><1> ContVee:[10.23,F]&[10.23,F]
 <end>
 
 
 Current Direction Wrong
 
-<4> ContVinm:[10.231,F]&[10.231,F]
-<4> ContVout:[-0.638,F]&[-0.639,F]
-<4> ContVinp:[10.24,F]&[10.24,F]
-<4> ContVcc:[-0.536,P]&[-0.536,P]
-<4> ContVee:[0.535,P]&[0.535,P]
+<4><1> ContVinm:[10.231,F]&[10.231,F]
+<4><1> ContVout:[-0.638,F]&[-0.639,F]
+<4><1> ContVinp:[10.24,F]&[10.24,F]
+<4><1> ContVcc:[-0.536,P]&[-0.536,P]
+<4><1> ContVee:[0.535,P]&[0.535,P]
 <end>
 
 
 100 us Wait
 
-<5> ContVinm:[-0.696,P]&[-0.696,P]
-<5> ContVout:[0.732,P]&[0.732,P]
-<5> ContVinp:[-0.696,P]&[-0.696,P]
-<5> ContVcc:[-0.537,P]&[-0.537,P]
-<5> ContVee:[0.536,P]&[0.536,P]
+<5><1> ContVinm:[-0.696,P]&[-0.696,P]
+<5><1> ContVout:[0.732,P]&[0.732,P]
+<5><1> ContVinp:[-0.696,P]&[-0.696,P]
+<5><1> ContVcc:[-0.537,P]&[-0.537,P]
+<5><1> ContVee:[0.536,P]&[0.536,P]
 <end>
 
 
 No Wait
 
-<6> ContVinm:[-0.697,P]&[-0.697,P]
-<6> ContVout:[0.732,P]&[0.732,P]
-<6> ContVinp:[-0.697,P]&[-0.697,P]
-<6> ContVcc:[-0.537,P]&[-0.537,P]
-<6> ContVee:[0.537,P]&[0.536,P]
+<6><1> ContVinm:[-0.697,P]&[-0.697,P]
+<6><1> ContVout:[0.732,P]&[0.732,P]
+<6><1> ContVinp:[-0.697,P]&[-0.697,P]
+<6><1> ContVcc:[-0.537,P]&[-0.537,P]
+<6><1> ContVee:[0.537,P]&[0.536,P]
 <end>
 
 
 Datalogged Wrong
 
-<7> ContVinm:[-0.699,F]&[-0.699,F]
-<7> ContVout:[0.734,F]&[0.734,F]
-<7> ContVinp:[-0.699,F]&[-0.699,F]
-<7> ContVcc:[-0.539,P]&[-0.539,P]
-<7> ContVee:[0.538,P]&[0.538,P]
+<7><1> ContVinm:[-0.699,F]&[-0.699,F]
+<7><1> ContVout:[0.734,F]&[0.734,F]
+<7><1> ContVinp:[-0.699,F]&[-0.699,F]
+<7><1> ContVcc:[-0.539,P]&[-0.539,P]
+<7><1> ContVee:[0.538,P]&[0.538,P]
 <end>
